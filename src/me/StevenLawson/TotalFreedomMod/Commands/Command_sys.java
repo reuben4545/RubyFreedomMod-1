@@ -95,7 +95,7 @@ public class Command_sys extends TFM_Command
 
         if (mode.equals("suspend"))
         {
-            if (!TFM_Util.RF_DEVELOPERS.contains(sender.getName()) && !TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()))
+            if (!TFM_Util.RF_DEVELOPERS.contains(sender.getName()) && !TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()) && !TFM_Util.LEADDEV.contains(sender.getName()))
             {
                 sender.sendMessage(TFM_Command.MSG_NO_PERMS);
                 return true;
