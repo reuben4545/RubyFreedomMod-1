@@ -106,6 +106,105 @@ public class TFM_AdminList
         return Collections.unmodifiableSet(names);
     }
 
+    public static Set<String> getSuperAdminNames()
+    {
+        final Set<String> names = new HashSet<String>();
+
+        for (TFM_Admin admin : adminList.values())
+        {
+            if (!admin.isActivated())
+            {
+                continue;
+            }
+
+            if (!admin.isSeniorAdmin())
+            {
+                continue;
+            }
+
+            if (!admin.isTelnetAdmin())
+            {
+                continue;
+            }
+
+            names.add(admin.getLastLoginName());
+        }
+
+        return Collections.unmodifiableSet(names);
+    }
+
+    public static Set<String> getTelnetAdminNames()
+    {
+        final Set<String> names = new HashSet<String>();
+
+        for (TFM_Admin admin : adminList.values())
+        {
+            if (admin.isTelnetAdmin())
+            {
+                names.add(admin.getLastLoginName());
+            }
+        }
+
+        return Collections.unmodifiableSet(names);
+    }
+
+    public static Set<String> getSeniorAdminNames()
+    {
+        final Set<String> names = new HashSet<String>();
+
+        for (TFM_Admin admin : adminList.values())
+        {
+            if (admin.isTelnetAdmin())
+            {
+                names.add(admin.getLastLoginName());
+            }
+        }
+
+        return Collections.unmodifiableSet(names);
+    }
+
+    public static Set<String> getExecutiveNames()
+    {
+        final Set<String> names = new HashSet<String>();
+
+        for (TFM_Admin admin : adminList.values())
+        {
+            if (TFM_Util.EX.contains(admin.getLastLoginName()))
+            {
+                names.add(admin.getLastLoginName());
+            }
+        }
+        return Collections.unmodifiableSet(names);
+    }
+    
+    public static Set<String> getSystemAdminNames()
+    {
+        final Set<String> names = new HashSet<String>();
+
+        for (TFM_Admin admin : adminList.values())
+        {
+            if (TFM_Util.SYS.contains(admin.getLastLoginName()))
+            {
+                names.add(admin.getLastLoginName());
+            }
+        }
+        return Collections.unmodifiableSet(names);
+    }
+    
+    public static Set<String> getCoOwnerNames()
+    {
+        final Set<String> names = new HashSet<String>();
+
+        for (TFM_Admin admin : adminList.values())
+        {
+            if (TFM_Util.SYS.contains(admin.getLastLoginName()))
+            {
+                names.add(admin.getLastLoginName());
+            }
+        }
+        return Collections.unmodifiableSet(names);
+    }
+
     public static Set<String> getLowercaseSuperNames()
     {
         final Set<String> names = new HashSet<String>();

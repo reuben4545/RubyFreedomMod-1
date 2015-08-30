@@ -140,7 +140,7 @@ public class TFM_Admin
     {
         return isTelnetAdmin;
     }
-
+    
     public List<String> getConsoleAliases()
     {
         return Collections.unmodifiableList(consoleAliases);
