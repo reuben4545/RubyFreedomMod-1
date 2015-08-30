@@ -117,12 +117,12 @@ public class TFM_AdminList
                 continue;
             }
 
-            if (!admin.isSeniorAdmin())
+            if (admin.isSeniorAdmin())
             {
                 continue;
             }
 
-            if (!admin.isTelnetAdmin())
+            if (admin.isTelnetAdmin())
             {
                 continue;
             }
@@ -160,48 +160,6 @@ public class TFM_AdminList
             }
         }
 
-        return Collections.unmodifiableSet(names);
-    }
-
-    public static Set<String> getExecutiveNames()
-    {
-        final Set<String> names = new HashSet<String>();
-
-        for (TFM_Admin admin : adminList.values())
-        {
-            if (TFM_Util.EX.contains(admin.getLastLoginName()))
-            {
-                names.add(admin.getLastLoginName());
-            }
-        }
-        return Collections.unmodifiableSet(names);
-    }
-    
-    public static Set<String> getSystemAdminNames()
-    {
-        final Set<String> names = new HashSet<String>();
-
-        for (TFM_Admin admin : adminList.values())
-        {
-            if (TFM_Util.SYS.contains(admin.getLastLoginName()))
-            {
-                names.add(admin.getLastLoginName());
-            }
-        }
-        return Collections.unmodifiableSet(names);
-    }
-    
-    public static Set<String> getCoOwnerNames()
-    {
-        final Set<String> names = new HashSet<String>();
-
-        for (TFM_Admin admin : adminList.values())
-        {
-            if (TFM_Util.SYS.contains(admin.getLastLoginName()))
-            {
-                names.add(admin.getLastLoginName());
-            }
-        }
         return Collections.unmodifiableSet(names);
     }
 

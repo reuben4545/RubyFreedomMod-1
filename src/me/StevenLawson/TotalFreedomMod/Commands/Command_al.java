@@ -21,11 +21,11 @@ public class Command_al extends TFM_Command
         sender.sendMessage(ChatColor.LIGHT_PURPLE + "- Senior Admins -");
         sender.sendMessage(ChatColor.LIGHT_PURPLE + StringUtils.join(TFM_AdminList.getSeniorAdminNames(), ", "));
         sender.sendMessage(ChatColor.GOLD + "- Executives -");
-        sender.sendMessage(ChatColor.GOLD + StringUtils.join(TFM_AdminList.getExecutiveNames(), ", "));
+        sender.sendMessage(ChatColor.GOLD + "Alosion and MysteriAce");
         sender.sendMessage(ChatColor.RED + "- System Admins -");
-        sender.sendMessage(ChatColor.RED + StringUtils.join(TFM_AdminList.getSystemAdminNames(), ", "));
+        sender.sendMessage(ChatColor.RED + "cowgomooo12, eddieusselman, xYurippe, Stampy100, xBadDawgx");
         sender.sendMessage(ChatColor.DARK_PURPLE + "The Lead Dev is Valencia_Orange and the only other real dev is tylerhyperHD.");
-        sender.sendMessage(ChatColor.BLUE + "The Co-Owners are " + StringUtils.join(TFM_AdminList.getCoOwnerNames(), " and "));
+        sender.sendMessage(ChatColor.BLUE + "The Co-Owners are TaahThePenguin and LegendIsAwesomes");
         sender.sendMessage(ChatColor.BLUE + "The Owners are reuben4545, falceso, and DarkGamingDronze");
         return true;
     }
