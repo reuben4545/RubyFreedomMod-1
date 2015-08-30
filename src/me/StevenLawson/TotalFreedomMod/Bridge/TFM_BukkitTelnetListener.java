@@ -41,7 +41,7 @@ public class TFM_BukkitTelnetListener implements Listener
         event.setBypassPassword(true);
         event.setName(admin.getLastLoginName());
         TFM_Util.adminAction(admin.getLastLoginName(), "Logged in via Telnet!", true);
-        Bukkit.dispatchCommand((CommandSender) server, "o " + admin.getLastLoginName() + " has logged in via Telnet");
+        Bukkit.dispatchCommand(server.getConsoleSender(), "o " + admin.getLastLoginName() + " has logged in via Telnet");
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
