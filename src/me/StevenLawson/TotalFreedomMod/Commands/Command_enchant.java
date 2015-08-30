@@ -8,7 +8,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandPermissions(level = AdminLevel.OP, source = SourceType.ONLY_IN_GAME)
+@CommandPermissions(level = AdminLevel.ALL, source = SourceType.ONLY_IN_GAME)
 @CommandParameters(description = "Enchant items.", usage = "/<command> <list | addall | max | reset | add <name> | remove <name> | god <level>>")
 public class Command_enchant extends TFM_Command
 {
@@ -74,21 +74,11 @@ public class Command_enchant extends TFM_Command
         {
             for (Enchantment ench : Enchantment.values())
             {
-                try
+                if (ench.equals(Enchantment.LOOT_BONUS_MOBS) || ench.equals(Enchantment.LOOT_BONUS_BLOCKS))
                 {
-                    if (ench.canEnchantItem(itemInHand))
-                    {
-                        if (ench.equals(Enchantment.LOOT_BONUS_MOBS) || ench.equals(Enchantment.LOOT_BONUS_BLOCKS))
-                        {
-                            continue;
-                        }
-                        itemInHand.addUnsafeEnchantment(ench, 32767);
-                    }
+                    continue;
                 }
-                catch (Exception ex)
-                {
-                    TFM_Log.info("Error using " + ench.getName() + " on " + itemInHand.getType().name() + " held by " + sender_p.getName() + ".");
-                }
+                itemInHand.addUnsafeEnchantment(ench, 32767);
             }
 
             sender.sendMessage(ChatColor.GREEN + "Maxed out enchants for this item.");
