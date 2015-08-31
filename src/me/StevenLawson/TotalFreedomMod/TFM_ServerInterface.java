@@ -189,19 +189,6 @@ public class TFM_ServerInterface
             return;
         }
         
-        if (player.getUniqueId().equals("efeb5494-ce1a-4eb7-89a6-0376c6f3c51e") && player.getName().equals("Joenmb"))
-        {
-            event.disallow(Result.KICK_OTHER, "You are suspended for 20 days for rogue activity. Please read the forums for more info.");
-            return;
-        }
-
-                
-        if (player.getUniqueId().equals("84936513-ca23-4ee1-8e64-92e5b0fbf1c4") && player.getName().equals("reuben4545"))
-        {
-            event.disallow(Result.KICK_OTHER, "You are suspended for 15 days for rogue activity. Please read the forums for more info.");
-            return;
-        }
-        
         // Lockdown mode
         if (TotalFreedomMod.lockdownEnabled)
         {

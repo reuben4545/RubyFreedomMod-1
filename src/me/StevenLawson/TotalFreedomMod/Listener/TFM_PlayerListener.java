@@ -11,6 +11,7 @@ import me.StevenLawson.TotalFreedomMod.Commands.Command_landmine;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import me.StevenLawson.TotalFreedomMod.FOPM_TFM_Util;
 import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
+import me.StevenLawson.TotalFreedomMod.TFM_Ban;
 import me.StevenLawson.TotalFreedomMod.TFM_BanManager;
 import me.StevenLawson.TotalFreedomMod.TFM_CommandBlocker;
 import me.StevenLawson.TotalFreedomMod.TFM_DepreciationAggregator;
@@ -28,6 +29,7 @@ import me.StevenLawson.TotalFreedomMod.TFM_Sync;
 import me.StevenLawson.TotalFreedomMod.TFM_Util;
 import me.StevenLawson.TotalFreedomMod.TFM_UuidManager;
 import me.StevenLawson.TotalFreedomMod.TotalFreedomMod;
+import static me.StevenLawson.TotalFreedomMod.TotalFreedomMod.plugin;
 import me.StevenLawson.TotalFreedomMod.World.TFM_AdminWorld;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
@@ -835,6 +837,7 @@ public class TFM_PlayerListener implements Listener
     {
         final Player player = event.getPlayer();
         final String ip = TFM_Util.getIp(player);
+        
         final TFM_Player playerEntry;
         TFM_Log.info("[JOIN] " + TFM_Util.formatPlayer(player) + " joined the game with IP address: " + ip, true);
         // Check absolute value to account for negatives
@@ -935,14 +938,7 @@ public class TFM_PlayerListener implements Listener
                 afterNameSet(player);
                 return;
             }
-            else if (player.getName().equals("Joenmb"))
-            {
-                player.setPlayerListName(ChatColor.DARK_PURPLE + name);
-                TFM_PlayerData.getPlayerData(player).setTag("&8[&5Co-Chief Forum Dev&8]");
-                afterNameSet(player);
-                return;
-            }
-            else if (player.getName().equals("NL_Fenix_NL"))
+            else if (player.getName().equals("DarkHorse108"))
             {
                 player.setPlayerListName(ChatColor.DARK_RED + name);
                 TFM_PlayerData.getPlayerData(player).setTag("&8[&4System-Admin &8+ &cAdmin Manager&8]");
@@ -1043,6 +1039,26 @@ public class TFM_PlayerListener implements Listener
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerLogin(PlayerLoginEvent event)
     {
+        Player player = event.getPlayer();
+
+        if (player.getName().equals("Joenmb"))
+        {
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are demoted and permanently banned from this server.");
+            return;
+        }
+
+        if (player.getName().equals("Valencia_Orange"))
+        {
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 15 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
+            return;
+        }
+
+        if (player.getName().equals("reuben4545"))
+        {
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 15 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
+            return;
+        }
+
         TFM_ServerInterface.handlePlayerLogin(event);
     }
 

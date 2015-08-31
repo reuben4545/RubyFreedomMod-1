@@ -28,7 +28,6 @@ public enum TFM_PlayerRank
     PHOENIX("a " + ChatColor.DARK_RED + "System-Admin" + ChatColor.AQUA + " and the " + ChatColor.RED + "Admin Manager", ChatColor.DARK_RED + "[Sys-Admin + Admin MGR]"),
     LEAD_DEVELOPER("the " + ChatColor.DARK_PURPLE + "Lead Developer" + ChatColor.AQUA + " of " + ChatColor.RED + "RubyFreedom", ChatColor.DARK_PURPLE + "[L-Dev]"),
     EXEC("an " + ChatColor.YELLOW + "Executive", ChatColor.YELLOW + "[Exec]"),
-    JOEN("the " + ChatColor.DARK_PURPLE + "Co-Chief Forum Developer", ChatColor.DARK_PURPLE + "[CCFD]"),
     CO_OWNER("a " + ChatColor.BLUE + "Co-Owner" + ChatColor.AQUA + " of " + ChatColor.RED + "RubyFreedom", ChatColor.BLUE + "[Co-Owner]"),
     MYSTERI("a " + ChatColor.GOLD + "Potato Caek", ChatColor.RED + "[Mysteri]"),
     DARK("an " + ChatColor.BLUE + "Owner" + ChatColor.AQUA + " and the " + ChatColor.DARK_PURPLE + "Co-Chief Developer", ChatColor.translateAlternateColorCodes('&', "&8[&4Owner &8+ &9Founder&8]")),
@@ -85,13 +84,8 @@ public enum TFM_PlayerRank
         {
             return DEVELOPER;
         }
-
-        else if (sender.getName().equals("Joenmb"))
-        {
-            return JOEN;
-        }
         
-        else if (sender.getName().equals("NL_Fenix_NL"))
+        else if (sender.getName().equals("DarkHorse108"))
         {
             return PHOENIX;
         }
