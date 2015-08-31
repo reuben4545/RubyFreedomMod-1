@@ -14,7 +14,7 @@ public class Command_cleanup extends TFM_Command
     public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
         TFM_Util.bcastMsg(ChatColor.RED + "Atempting to start server cleanup, expect lag for few seconds!");
-        if (!TFM_Util.SYS.contains(sender.getName()) && !TFM_Util.DEVELOPERS.contains(sender.getName()) && !TFM_Util.COOWNER.contains(sender.getName()) && !TFM_Util.EX.contains(sender.getName()) && !TFM_Util.LEADDEV.contains(sender.getName()))
+        if (!TFM_Util.SYS.contains(sender.getName()) && !TFM_Util.DEVELOPERS.contains(sender.getName()) && !TFM_Util.COOWNER.contains(sender.getName()) && !TFM_Util.EX.contains(sender.getName()))
         {
             server.dispatchCommand(sender, "opall -c");
             server.dispatchCommand(sender, "setl");

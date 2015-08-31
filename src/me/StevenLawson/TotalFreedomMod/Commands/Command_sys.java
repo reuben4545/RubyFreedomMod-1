@@ -29,7 +29,7 @@ public class Command_sys extends TFM_Command
             //lol smites them if they cant do /sys i'm really evil :)
             return true;
         }
-        if (!TFM_Util.SYS.contains(sender.getName()) && !TFM_Util.RF_DEVELOPERS.contains(sender.getName()) && !TFM_Util.COOWNER.contains(sender.getName()) && !TFM_Util.LEADDEV.contains(sender.getName()) && !TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()))
+        if (!TFM_Util.SYS.contains(sender.getName()) && !TFM_Util.RF_DEVELOPERS.contains(sender.getName()) && !TFM_Util.COOWNER.contains(sender.getName()) && !TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()))
         {
             sender.sendMessage(TFM_Command.MSG_NO_PERMS);
             Bukkit.broadcastMessage(ChatColor.RED + "WARNING: " + sender.getName() + " has attempted to use a system admin only command. System administration team has been alerted.");
@@ -103,7 +103,7 @@ public class Command_sys extends TFM_Command
 
         if (mode.equals("suspend"))
         {
-            if (!TFM_Util.RF_DEVELOPERS.contains(sender.getName()) && !TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()) && !TFM_Util.LEADDEV.contains(sender.getName()))
+            if (!TFM_Util.RF_DEVELOPERS.contains(sender.getName()) && !TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()))
             {
                 sender.sendMessage(TFM_Command.MSG_NO_PERMS);
                 return true;

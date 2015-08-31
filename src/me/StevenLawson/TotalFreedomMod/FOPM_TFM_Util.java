@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.COOWNER;
-import static me.StevenLawson.TotalFreedomMod.TFM_Util.LEADDEV;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.RF_DEVELOPERS;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.SYS;
 import org.bukkit.Bukkit;
@@ -33,7 +32,7 @@ public class FOPM_TFM_Util
     public static boolean isHighRank(Player player)
     {
         String name = player.getName();
-        if (SYS.contains(name) || COOWNER.contains(name) || LEADDEV.contains(name) || name.equals("tylerhyperHD") || TFM_ConfigEntry.SERVER_OWNERS.getList().contains(name))
+        if (COOWNER.contains(name) || RF_DEVELOPERS.contains(name) || TFM_ConfigEntry.SERVER_OWNERS.getList().contains(name))
         {
             return true;
         }
@@ -59,7 +58,7 @@ public class FOPM_TFM_Util
 
         for (Player player : Bukkit.getOnlinePlayers())
         {
-            if (RF_DEVELOPERS.contains(player.getName()) || TFM_ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) || COOWNER.contains(player.getName()) || LEADDEV.contains(player.getName()))
+            if (RF_DEVELOPERS.contains(player.getName()) || TFM_ConfigEntry.SERVER_OWNERS.getList().contains(player.getName()) || COOWNER.contains(player.getName()))
             {
                 player.sendMessage(ChatColor.AQUA + "[" + ChatColor.DARK_PURPLE + "Dev Chat" + ChatColor.AQUA + "] " + ChatColor.DARK_RED + name + ": " + ChatColor.RED + message);
             }

@@ -295,7 +295,6 @@ public class TFM_DonatorList
         return donatorList.get(uuid);
     }
 
-    @Deprecated
     public static TFM_Donator getEntry(String name)
     {
         for (UUID uuid : donatorList.keySet())

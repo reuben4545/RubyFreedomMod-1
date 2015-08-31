@@ -8,10 +8,10 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.regex.Pattern;
 import me.StevenLawson.TotalFreedomMod.Commands.Command_landmine;
+import me.StevenLawson.TotalFreedomMod.Commands.Command_lockup;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import me.StevenLawson.TotalFreedomMod.FOPM_TFM_Util;
 import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
-import me.StevenLawson.TotalFreedomMod.TFM_Ban;
 import me.StevenLawson.TotalFreedomMod.TFM_BanManager;
 import me.StevenLawson.TotalFreedomMod.TFM_CommandBlocker;
 import me.StevenLawson.TotalFreedomMod.TFM_DepreciationAggregator;
@@ -30,6 +30,7 @@ import me.StevenLawson.TotalFreedomMod.TFM_Util;
 import me.StevenLawson.TotalFreedomMod.TFM_UuidManager;
 import me.StevenLawson.TotalFreedomMod.TotalFreedomMod;
 import static me.StevenLawson.TotalFreedomMod.TotalFreedomMod.plugin;
+import static me.StevenLawson.TotalFreedomMod.TotalFreedomMod.server;
 import me.StevenLawson.TotalFreedomMod.World.TFM_AdminWorld;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
@@ -50,6 +51,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.LeavesDecayEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -411,12 +413,25 @@ public class TFM_PlayerListener implements Listener
 
         TFM_AdminWorld.getInstance().validateMovement(event);
     }
+    
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent event)
+    {
+        Player player = event.getEntity().getPlayer();
+        if (event.getDeathMessage().contains("died"))
+        {
+            event.setDeathMessage(player.getName() + " was killed by an admin");
+            return;
+        }
+    }
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerMove(PlayerMoveEvent event)
     {
         final Location from = event.getFrom();
         final Location to = event.getTo();
+        final Player player = event.getPlayer();
+        
         try
         {
             if (from.getWorld() == to.getWorld() && from.distanceSquared(to) < (0.0001 * 0.0001))
@@ -434,7 +449,6 @@ public class TFM_PlayerListener implements Listener
             return;
         }
 
-        final Player player = event.getPlayer();
         final TFM_PlayerData playerdata = TFM_PlayerData.getPlayerData(player);
 
         for (Entry<Player, Double> fuckoff : TotalFreedomMod.fuckoffEnabledFor.entrySet())
@@ -837,7 +851,7 @@ public class TFM_PlayerListener implements Listener
     {
         final Player player = event.getPlayer();
         final String ip = TFM_Util.getIp(player);
-        
+
         final TFM_Player playerEntry;
         TFM_Log.info("[JOIN] " + TFM_Util.formatPlayer(player) + " joined the game with IP address: " + ip, true);
         // Check absolute value to account for negatives
@@ -941,6 +955,13 @@ public class TFM_PlayerListener implements Listener
             else if (player.getName().equals("DarkHorse108"))
             {
                 player.setPlayerListName(ChatColor.DARK_RED + name);
+                TFM_PlayerData.getPlayerData(player).setTag("&8[&4System-Admin &8+ &cL-Admin Manager&8]");
+                afterNameSet(player);
+                return;
+            }
+            else if (player.getName().equals("NL_Fenix_NL"))
+            {
+                player.setPlayerListName(ChatColor.DARK_RED + name);
                 TFM_PlayerData.getPlayerData(player).setTag("&8[&4System-Admin &8+ &cAdmin Manager&8]");
                 afterNameSet(player);
                 return;
@@ -949,14 +970,6 @@ public class TFM_PlayerListener implements Listener
             {
                 player.setPlayerListName(ChatColor.DARK_PURPLE + name);
                 TFM_PlayerData.getPlayerData(player).setTag("&8[&5FOP-Developer&8]");
-                afterNameSet(player);
-                return;
-            }
-            if (TFM_Util.LEADDEV.contains(name))
-            {
-                player.setPlayerListName(ChatColor.DARK_PURPLE + name);
-                TFM_PlayerData.getPlayerData(player).setTag("&8[&5Lead-Developer&8]");
-                TFM_Util.bcastMsg(ChatColor.DARK_PURPLE + player.getName() + ChatColor.GOLD + " is the" + ChatColor.DARK_PURPLE + " Executive Lead Developer!");
                 afterNameSet(player);
                 return;
             }
@@ -1049,8 +1062,9 @@ public class TFM_PlayerListener implements Listener
 
         if (player.getName().equals("Valencia_Orange"))
         {
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are gone from this server. Fuck off you twat.");
-            return;
+            TFM_AdminList.removeSuperadmin(player);
+            TFM_PlayerData.getPlayerData(player).setFrozen(true);
+            Command_lockup.startLockup(player);
         }
 
         if (player.getName().equals("reuben4545"))

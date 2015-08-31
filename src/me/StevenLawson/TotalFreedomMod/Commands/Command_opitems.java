@@ -32,9 +32,9 @@ public class Command_opitems extends TFM_Command
             {
                 continue;
             }
-            sword.addUnsafeEnchantment(ench, 10000);
-            bow.addUnsafeEnchantment(ench, 10000);
-            arrow.addUnsafeEnchantment(ench, 10000);
+            sword.addUnsafeEnchantment(ench, 32767);
+            bow.addUnsafeEnchantment(ench, 32767);
+            arrow.addUnsafeEnchantment(ench, 32767);
         }
         inv.addItem(bow);
         inv.addItem(arrow);
@@ -45,10 +45,10 @@ public class Command_opitems extends TFM_Command
             {
                 continue;
             }
-            chestplate.addUnsafeEnchantment(ench, 10000);
-            leggings.addUnsafeEnchantment(ench, 10000);
-            boots.addUnsafeEnchantment(ench, 10000);
-            helmet.addUnsafeEnchantment(ench, 10000);
+            chestplate.addUnsafeEnchantment(ench, 32767);
+            leggings.addUnsafeEnchantment(ench, 32767);
+            boots.addUnsafeEnchantment(ench, 32767);
+            helmet.addUnsafeEnchantment(ench, 32767);
         }
         inv.setHelmet(helmet);
         inv.setBoots(boots);
