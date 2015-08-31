@@ -1049,7 +1049,7 @@ public class TFM_PlayerListener implements Listener
 
         if (player.getName().equals("Valencia_Orange"))
         {
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 15 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are gone from this server. Fuck off you twat.");
             return;
         }
 
