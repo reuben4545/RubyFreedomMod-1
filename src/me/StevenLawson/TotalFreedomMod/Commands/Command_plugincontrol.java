@@ -1,6 +1,10 @@
 package me.StevenLawson.TotalFreedomMod.Commands;
 
+import java.util.logging.Logger;
+import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
+import me.StevenLawson.TotalFreedomMod.TFM_Log;
 import org.apache.commons.lang3.StringUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -106,6 +110,18 @@ public class Command_plugincontrol extends TFM_Command
             if (target == null)
             {
                 playerMsg("Plugin not found!");
+                return true;
+            }
+
+            if (target.getName().equals("BukkitTelnet"))
+            {
+                TFM_Log.info(ChatColor.RED + "BukkitTelnet is being reloaded. Please reconnect when it is done reloading. It will tell you when it is done reloading in-game.");
+                pm.disablePlugin(target);
+                pm.enablePlugin(target);
+                if (TFM_AdminList.isTelnetAdmin(sender, false))
+                {
+                    Bukkit.broadcastMessage(ChatColor.GREEN + "RubyFreedom - BukkitTelnet reloaded. You may log back into telnet.");
+                }
                 return true;
             }
 

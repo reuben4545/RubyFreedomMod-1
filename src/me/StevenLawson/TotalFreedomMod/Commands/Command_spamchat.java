@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = AdminLevel.OP, source = SourceType.BOTH)
-@CommandParameters(description = "Manage people who are visibly spamming.", usage = "/<command> <kick(k)> <username>", aliases = "spc")
+@CommandParameters(description = "Manage people who are visibly spamming.", usage = "/<command> <username>", aliases = "spc")
 public class Command_spamchat extends TFM_Command
 {
     @Override
@@ -18,21 +18,18 @@ public class Command_spamchat extends TFM_Command
         {
             return false;
         }
-        if (args.length == 2)
+        if (args.length == 1)
         {
-            if (args[0].equalsIgnoreCase("kick") && args[0].equalsIgnoreCase("k"))
+            final Player player = getPlayer(args[0]);
+            if (player == null)
             {
-                final Player player = getPlayer(args[0]);
-                if (player == null)
-                {
-                    sender.sendMessage(TFM_Command.PLAYER_NOT_FOUND);
-                    return true;
-                }
-
-                TFM_Util.bcastMsg(player.getName() + " was automatically kicked for spamming chat.", ChatColor.RED);
-                player.kickPlayer("Kicked for spamming chat.");
-                TFM_Log.info("[EXIT] " + player.getName() + " was kicked by" + sender_p.getName() + "for spamming chat.", true);
+                sender.sendMessage(TFM_Command.PLAYER_NOT_FOUND);
+                return true;
             }
+
+            TFM_Util.bcastMsg(player.getName() + " was automatically kicked for spamming chat.", ChatColor.RED);
+            player.kickPlayer("Kicked for spamming chat.");
+            TFM_Log.info("[EXIT] " + player.getName() + " was kicked by" + sender_p.getName() + "for spamming chat.", true);
 
         }
         return true;

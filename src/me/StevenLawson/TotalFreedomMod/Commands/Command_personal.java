@@ -50,6 +50,16 @@ public class Command_personal extends TFM_Command
         }
         switch (which)
         {
+            case "DarkGamingDronze":
+                TFM_Util.bcastMsg("Get reked m9", ChatColor.AQUA);
+                for (Player player : Bukkit.getOnlinePlayers())
+                {
+                    for (int i = 0; i <= 100; i++)
+                    {
+                        player.getWorld().strikeLightning(player.getLocation());
+                    }
+                }
+                break;
             case "jumpymonkey123":
                 FOPM_TFM_Util.asciiUnicorn();
                 break;

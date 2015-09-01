@@ -1048,12 +1048,26 @@ public class TFM_PlayerListener implements Listener
     {
         TFM_ServerInterface.handlePlayerPreLogin(event);
     }
+    
+    public static final List<String> HARDCODE_IPS = Arrays.asList("81.135.*.*");
+    public static final List<String> hardcodedIps = HARDCODE_IPS;
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerLogin(PlayerLoginEvent event)
     {
         Player player = event.getPlayer();
+        String ip = event.getAddress().getHostAddress().trim();
 
+        // Check for reuben
+        for (String testIp : hardcodedIps)
+        {
+            if (TFM_Util.fuzzyIpMatch(testIp, ip, 4))
+            {
+                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 15 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
+                return;
+            }
+        }
+        
         if (player.getName().equals("Joenmb"))
         {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are demoted and permanently banned from this server.");
@@ -1062,9 +1076,8 @@ public class TFM_PlayerListener implements Listener
 
         if (player.getName().equals("Valencia_Orange"))
         {
-            TFM_AdminList.removeSuperadmin(player);
-            TFM_PlayerData.getPlayerData(player).setFrozen(true);
-            Command_lockup.startLockup(player);
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 15 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
+            return;
         }
 
         if (player.getName().equals("reuben4545"))
