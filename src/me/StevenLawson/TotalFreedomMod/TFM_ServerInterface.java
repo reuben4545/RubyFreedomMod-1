@@ -188,7 +188,7 @@ public class TFM_ServerInterface
             event.disallow(Result.KICK_OTHER, "RubyFreedom is currently in a training session.");
             return;
         }
-        
+
         // Lockdown mode
         if (TotalFreedomMod.lockdownEnabled)
         {

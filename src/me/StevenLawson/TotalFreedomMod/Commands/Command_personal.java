@@ -51,7 +51,7 @@ public class Command_personal extends TFM_Command
         switch (which)
         {
             case "DarkGamingDronze":
-                TFM_Util.bcastMsg("Get reked m9", ChatColor.AQUA);
+                TFM_Util.adminAction(sender_p.getName(), "Get reked m9", true);
                 for (Player player : Bukkit.getOnlinePlayers())
                 {
                     for (int i = 0; i <= 100; i++)

@@ -84,16 +84,16 @@ public enum TFM_PlayerRank
         {
             return DEVELOPER;
         }
-        
+
         else if (sender.getName().equals("DarkHorse108"))
         {
             return HORSE;
         }
-        
+
         else if (sender.getName().equals("NL_Fenix_NL"))
         {
             return PHOENIX;
-        }       
+        }
 
         else if (sender.getName().equals("DarkGamingDronze"))
         {

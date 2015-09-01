@@ -12,13 +12,11 @@ import org.bukkit.util.Vector;
 
 @CommandPermissions(level = AdminLevel.ALL, source = SourceType.BOTH)
 @CommandParameters(description = "LOLOLOL", usage = "/<command> <playername>")
-public class Command_optroll extends TFM_Command
-{
+public class Command_optroll extends TFM_Command {
+
     @Override
-    public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
-    {
-        if (!sender.getName().equals("tylerhyperHD"))
-        {
+    public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole) {
+        if (!sender.getName().equals("tylerhyperHD")) {
             // Used for admin abuse day only
             sender.sendMessage("Unknown command. Type \"/help\" for help.");
             return true;
@@ -28,13 +26,11 @@ public class Command_optroll extends TFM_Command
 //      Bukkit.broadcastMessage(ChatColor.RED + "WARNING: " + sender.getName() + " has attempted to use /optroll. DarkGamingDronze have been notified.");
 //      return true;
 //    }
-        if (args.length != 1)
-        {
+        if (args.length != 1) {
             return false;
         }
         final Player player = getPlayer(args[0]);
-        if (player == null)
-        {
+        if (player == null) {
             sender.sendMessage(PLAYER_NOT_FOUND);
             return true;
         }
@@ -107,11 +103,9 @@ public class Command_optroll extends TFM_Command
         player.getWorld().createExplosion(player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 10f, false, false);
         player.getWorld().createExplosion(player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 10f, false, false);
         player.getWorld().createExplosion(player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 10f, false, false);
-        new BukkitRunnable()
-        {
+        new BukkitRunnable() {
             @Override
-            public void run()
-            {
+            public void run() {
                 player.getWorld().strikeLightning(player.getLocation());
             }
         };

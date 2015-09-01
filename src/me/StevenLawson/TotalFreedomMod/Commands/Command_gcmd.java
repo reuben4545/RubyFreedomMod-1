@@ -20,8 +20,9 @@ public class Command_gcmd extends TFM_Command
         }
 
         final Player player = getPlayer(args[0]);
-        
-        if (FOPM_TFM_Util.isHighRank(player)) {
+
+        if (FOPM_TFM_Util.isHighRank(player))
+        {
             sender.sendMessage("You cannot gcmd a high ranking admin.");
             return true;
         }

@@ -1,11 +1,8 @@
 package me.StevenLawson.TotalFreedomMod;
 
-import java.util.HashSet;
-import java.util.Set;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.COOWNER;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.RF_DEVELOPERS;
-import static me.StevenLawson.TotalFreedomMod.TFM_Util.SYS;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -213,5 +210,5 @@ public class FOPM_TFM_Util
     {
         TFM_PlayerData.getPlayerData(player).setDoubleJumper(state);
     }
-    
+
 }

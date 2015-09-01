@@ -523,6 +523,27 @@ public class TFM_AdminList
         return false;
     }
 
+    public static boolean isTelnetAdmin(CommandSender sender)
+    {
+        if (!isSuperAdmin(sender))
+        {
+            return false;
+        }
+
+        if (!(sender instanceof Player))
+        {
+            return true;
+        }
+
+        final TFM_Admin entry = getEntry((Player) sender);
+        if (entry != null)
+        {
+            return entry.isTelnetAdmin();
+        }
+
+        return false;
+    }
+
     public static boolean isSeniorAdmin(CommandSender sender)
     {
         return isSeniorAdmin(sender, false);

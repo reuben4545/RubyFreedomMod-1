@@ -14,7 +14,7 @@ import org.bukkit.scheduler.BukkitTask;
 public class Command_lockup extends TFM_Command
 {
     private static TotalFreedomMod plugin;
-    
+
     @Override
     public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {

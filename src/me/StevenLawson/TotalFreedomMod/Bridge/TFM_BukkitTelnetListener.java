@@ -10,10 +10,8 @@ import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
 import me.StevenLawson.TotalFreedomMod.TFM_CommandBlocker;
 import me.StevenLawson.TotalFreedomMod.TFM_PlayerData;
 import me.StevenLawson.TotalFreedomMod.TFM_Util;
-import static me.StevenLawson.TotalFreedomMod.TotalFreedomMod.server;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -42,12 +40,11 @@ public class TFM_BukkitTelnetListener implements Listener
         event.setName(admin.getLastLoginName());
         for (Player player : Bukkit.getOnlinePlayers())
         {
-            if (TFM_AdminList.isSuperAdmin(player))
+            if (TFM_AdminList.isTelnetAdmin(player))
             {
-                Bukkit.broadcastMessage(ChatColor.RED + admin.getLastLoginName() + " - Logged in via Telnet!");
+                Bukkit.broadcastMessage(ChatColor.RED + admin.getLastLoginName() + " has logged in via Telnet under the IP of " + ip.trim());
             }
         }
-        Bukkit.dispatchCommand(server.getConsoleSender(), "o " + admin.getLastLoginName() + " has logged in via Telnet");
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
@@ -93,9 +90,7 @@ public class TFM_BukkitTelnetListener implements Listener
             playerTags.put("tfm.admin.isAdmin", isAdmin);
             playerTags.put("tfm.admin.isTelnetAdmin", isTelnetAdmin);
             playerTags.put("tfm.admin.isSeniorAdmin", isSeniorAdmin);
-
             playerTags.put("tfm.playerdata.getTag", TFM_PlayerData.getPlayerData(player).getTag());
-
             playerTags.put("tfm.essentialsBridge.getNickname", TFM_EssentialsBridge.getNickname(player.getName()));
         }
     }
