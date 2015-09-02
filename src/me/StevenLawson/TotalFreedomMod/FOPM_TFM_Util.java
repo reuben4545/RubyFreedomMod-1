@@ -3,6 +3,7 @@ package me.StevenLawson.TotalFreedomMod;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.COOWNER;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.RF_DEVELOPERS;
+import static me.StevenLawson.TotalFreedomMod.TotalFreedomMod.server;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -206,6 +207,10 @@ public class FOPM_TFM_Util
         return TFM_PlayerData.getPlayerData(player).isDoubleJumper();
     }
 
+    public static int broadcastMessage(String message) {
+        return server.broadcastMessage(message);
+    }
+    
     public static void setDoubleJumper(Player player, boolean state)
     {
         TFM_PlayerData.getPlayerData(player).setDoubleJumper(state);

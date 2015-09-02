@@ -38,13 +38,8 @@ public class TFM_BukkitTelnetListener implements Listener
 
         event.setBypassPassword(true);
         event.setName(admin.getLastLoginName());
-        for (Player player : Bukkit.getOnlinePlayers())
-        {
-            if (TFM_AdminList.isTelnetAdmin(player))
-            {
-                Bukkit.broadcastMessage(ChatColor.RED + admin.getLastLoginName() + " has logged in via Telnet under the IP of " + ip.trim());
-            }
-        }
+        String fuzzy = TFM_Util.getFuzzyIp(ip);
+        TFM_Util.telnetMessage(admin.getLastLoginName(), "Logged in via Telnet with the IP of " + fuzzy.trim(), true);
     }
 
     @EventHandler(priority = EventPriority.NORMAL)

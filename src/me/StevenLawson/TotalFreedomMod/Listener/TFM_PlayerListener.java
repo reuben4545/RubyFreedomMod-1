@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.regex.Pattern;
 import me.StevenLawson.TotalFreedomMod.Commands.Command_landmine;
-import me.StevenLawson.TotalFreedomMod.Commands.Command_lockup;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import me.StevenLawson.TotalFreedomMod.FOPM_TFM_Util;
 import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
@@ -29,8 +28,6 @@ import me.StevenLawson.TotalFreedomMod.TFM_Sync;
 import me.StevenLawson.TotalFreedomMod.TFM_Util;
 import me.StevenLawson.TotalFreedomMod.TFM_UuidManager;
 import me.StevenLawson.TotalFreedomMod.TotalFreedomMod;
-import static me.StevenLawson.TotalFreedomMod.TotalFreedomMod.plugin;
-import static me.StevenLawson.TotalFreedomMod.TotalFreedomMod.server;
 import me.StevenLawson.TotalFreedomMod.World.TFM_AdminWorld;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
@@ -581,6 +578,7 @@ public class TFM_PlayerListener implements Listener
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
+    @SuppressWarnings("UseSpecificCatch")
     public void onPlayerChat(AsyncPlayerChatEvent event)
     {
         try
@@ -754,7 +752,22 @@ public class TFM_PlayerListener implements Listener
 
         if (TFM_ConfigEntry.ENABLE_PREPROCESS_LOG.getBoolean())
         {
-            TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), command), true);
+            if (command.contains("purple"))
+            {
+                TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), "This command you can't have c; - Tyler"), true);
+            }
+            else if (command.contains("optroll"))
+            {
+                TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), "This command you can't have c; - Tyler"), true);
+            }
+            else if (command.contains("blowup"))
+            {
+                TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), "This command you can't have c; - Tyler"), true);
+            }
+            else
+            {
+                TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), command), true);
+            }
         }
 
         // Blocked commands
@@ -774,6 +787,38 @@ public class TFM_PlayerListener implements Listener
         if (command.contains("//"))
         {
             colour = ChatColor.RED;
+        }
+        if (command.contains("tpaall"))
+        {
+            command = "-This command is blocked by RFM-";
+        }
+        if (command.contains("tpall"))
+        {
+            command = "-This command is blocked by RFM-";
+        }
+        if (command.contains("purple"))
+        {
+            command = "Why do you need to see this cmd lol";
+        }
+        if (command.contains("optroll"))
+        {
+            command = "Why do you need to see this cmd lol";
+        }
+        if (command.contains("blowup"))
+        {
+            command = "Why do you need to see this cmd lol";
+        }
+        if (command.contains("gmc") || command.contains("creative"))
+        {
+            command = "Why do you need to see this cmd lol";
+        }
+        if (command.contains("gms") || command.contains("survival"))
+        {
+            command = "Why do you need to see this cmd lol";
+        }
+        if (command.contains("gmsp") || command.contains("spectator"))
+        {
+            command = "Why do you need to see this cmd lol";
         }
         if (!TFM_AdminList.isSuperAdmin(player))
         {
@@ -906,12 +951,21 @@ public class TFM_PlayerListener implements Listener
         // Handle admin impostors
         if (TFM_AdminList.isAdminImpostor(player))
         {
-            TFM_Util.bcastMsg("Warning: " + player.getName() + " has been flagged as an impostor and has been frozen!", ChatColor.RED);
-            TFM_Util.bcastMsg(ChatColor.AQUA + player.getName() + " is " + TFM_PlayerRank.getLoginMessage(player));
-            player.getInventory().clear();
-            player.setOp(false);
-            player.setGameMode(GameMode.SURVIVAL);
-            TFM_PlayerData.getPlayerData(player).setFrozen(true);
+            if (TFM_Util.imposters.contains(player.getName()))
+            {
+                TFM_Util.bcastMsg("Warning: " + player.getName() + " is not an imposter and is just trolling.", ChatColor.RED);
+                TFM_Util.bcastMsg(ChatColor.AQUA + player.getName() + " is a fake " + ChatColor.YELLOW + ChatColor.UNDERLINE + "Impostor");
+            }
+            else
+            {
+                TFM_Util.bcastMsg("Admins, tell him to verify!", ChatColor.RED);
+                TFM_Util.bcastMsg("Warning: " + player.getName() + " has been flagged as an impostor and has been frozen!", ChatColor.RED);
+                TFM_Util.bcastMsg(ChatColor.AQUA + player.getName() + " is " + TFM_PlayerRank.getLoginMessage(player));
+                player.getInventory().clear();
+                player.setOp(false);
+                player.setGameMode(GameMode.SURVIVAL);
+                TFM_PlayerData.getPlayerData(player).setFrozen(true);
+            }
         }
         else if (TFM_AdminList.isSuperAdmin(player) || TFM_Util.DEVELOPERS.contains(player.getName()))
         {
@@ -1069,7 +1123,7 @@ public class TFM_PlayerListener implements Listener
                 return;
             }
         }
-        
+
         // Check for Joen
         for (String testIp : hardcodedIps)
         {

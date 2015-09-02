@@ -1,6 +1,7 @@
 package me.StevenLawson.TotalFreedomMod.Commands;
 
 import java.util.logging.Logger;
+import me.StevenLawson.BukkitTelnet.TelnetLogger;
 import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
 import me.StevenLawson.TotalFreedomMod.TFM_Log;
 import org.apache.commons.lang3.StringUtils;
@@ -115,10 +116,10 @@ public class Command_plugincontrol extends TFM_Command
 
             if (target.getName().equals("BukkitTelnet"))
             {
-                TFM_Log.info(ChatColor.RED + "BukkitTelnet is being reloaded. Please reconnect when it is done reloading. It will tell you when it is done reloading in-game.");
+                TelnetLogger.info("BukkitTelnet is being reloaded. Please reconnect when it is done reloading. It will tell you when it is done reloading in-game.");
                 pm.disablePlugin(target);
                 pm.enablePlugin(target);
-                if (TFM_AdminList.isTelnetAdmin(sender, false))
+                if (TFM_AdminList.isTelnetAdmin(sender))
                 {
                     Bukkit.broadcastMessage(ChatColor.GREEN + "RubyFreedom - BukkitTelnet reloaded. You may log back into telnet.");
                 }

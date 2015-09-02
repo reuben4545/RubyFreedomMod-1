@@ -135,6 +135,24 @@ public class TFM_Util
     {
         TFM_Util.bcastMsg(message, null);
     }
+    
+    public static void telnetFix(String message, ChatColor color)
+    {
+        TFM_Log.info(message, true);
+
+        for (Player player : Bukkit.getOnlinePlayers())
+        {
+            if (TFM_AdminList.isTelnetAdmin(player))
+            {
+                player.sendMessage((color == null ? "" : color) + message);
+            }
+        }
+    }
+
+    public static void telnetFix(String message)
+    {
+        TFM_Util.telnetFix(message, null);
+    }
 
     // Still in use by listeners
     public static void playerMsg(CommandSender sender, String message, ChatColor color)
@@ -157,6 +175,11 @@ public class TFM_Util
     public static void adminAction(String adminName, String action, boolean isRed)
     {
         TFM_Util.bcastMsg(adminName + " - " + action, (isRed ? ChatColor.RED : ChatColor.AQUA));
+    }
+    
+    public static void telnetMessage(String adminName, String action, boolean isRed)
+    {
+        TFM_Util.telnetFix(adminName + " - " + action, (isRed ? ChatColor.RED : ChatColor.AQUA));
     }
 
     public static String getIp(OfflinePlayer player)

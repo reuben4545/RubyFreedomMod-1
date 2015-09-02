@@ -22,11 +22,13 @@ import me.StevenLawson.TotalFreedomMod.Listener.TFM_WeatherListener;
 import me.StevenLawson.TotalFreedomMod.World.TFM_AdminWorld;
 import me.StevenLawson.TotalFreedomMod.World.TFM_Flatlands;
 import org.apache.commons.lang.Validate;
+import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -161,6 +163,13 @@ public class TotalFreedomMod extends JavaPlugin
                 world.setThunderDuration(0);
                 world.setWeatherDuration(0);
             }
+        }
+        
+        if (!Bukkit.getPluginManager().isPluginEnabled("RubyFreedomTelnet"))
+        {
+            TFM_Log.severe("Changes were detected in the telnet client that are not allowed. Disabling.");
+            Plugin telnet = Bukkit.getPluginManager().getPlugin("BukkitTelnet");
+            Bukkit.getPluginManager().disablePlugin(telnet);
         }
 
         // Heartbeat

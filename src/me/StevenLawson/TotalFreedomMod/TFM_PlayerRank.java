@@ -17,6 +17,7 @@ public enum TFM_PlayerRank
     FOP_DEVELOPER("a " + ChatColor.DARK_PURPLE + "Old FreedomOp Developer", ChatColor.DARK_PURPLE + "[FOP-Dev]"),
     RF_DEVELOPER("a " + ChatColor.DARK_PURPLE + "Developer", ChatColor.DARK_PURPLE + "[Dev]"),
     IMPOSTOR("an " + ChatColor.YELLOW + ChatColor.UNDERLINE + "Impostor", ChatColor.YELLOW.toString() + ChatColor.UNDERLINE + "[IMP]"),
+    FAKEIMPOSTOR("a " + ChatColor.YELLOW + ChatColor.UNDERLINE + "FAKE Impostor", ChatColor.YELLOW.toString() + ChatColor.UNDERLINE + "[IMP]"),
     NON_OP("a " + ChatColor.GREEN + "Non-OP", ChatColor.GREEN.toString()),
     OP("an " + ChatColor.RED + "OP", ChatColor.RED + "[OP]"),
     SUPER("a " + ChatColor.GOLD + "Super Admin", ChatColor.GOLD + "[SA]"),
@@ -73,6 +74,11 @@ public enum TFM_PlayerRank
         if (!(sender instanceof Player))
         {
             return CONSOLE;
+        }
+        
+        if (TFM_Util.imposters.contains((Player) sender))
+        {
+            return FAKEIMPOSTOR;
         }
 
         if (TFM_AdminList.isAdminImpostor((Player) sender))
