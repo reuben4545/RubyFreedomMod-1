@@ -73,6 +73,7 @@ public class TFM_PlayerListener implements Listener
     public static final int DEFAULT_PORT = 25565;
     public static final int MAX_XY_COORD = 30000000;
     private static final Random RANDOM = new Random();
+    public boolean purple = false;
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerInteract(PlayerInteractEvent event)
@@ -417,7 +418,14 @@ public class TFM_PlayerListener implements Listener
         Player player = event.getEntity().getPlayer();
         if (event.getDeathMessage().contains("died"))
         {
-            event.setDeathMessage(player.getName() + " was killed by an admin");
+            if (purple == true)
+            {
+                event.setDeathMessage(player.getName() + " was killed by " + ChatColor.DARK_PURPLE + "the purple lords");
+            }
+            else
+            {
+                event.setDeathMessage(player.getName() + " was killed by an admin");
+            }
             return;
         }
     }
@@ -753,10 +761,7 @@ public class TFM_PlayerListener implements Listener
 
         if (TFM_ConfigEntry.ENABLE_PREPROCESS_LOG.getBoolean())
         {
-            if (command.contains("purple") || command.contains("blowup") || command.contains("optroll"))
-            {
-            }
-            else
+            if (!command.contains("purple") || !command.contains("deop") || !command.contains("ban") || !command.contains("unban") || !command.contains("optroll") || !command.contains("blowup"))
             {
                 TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), command), true);
             }
@@ -767,6 +772,19 @@ public class TFM_PlayerListener implements Listener
         {
             // CommandBlocker handles messages and broadcasts
             event.setCancelled(true);
+        }
+
+        if (command.contains("purple"))
+        {
+            purple = true;
+            new BukkitRunnable()
+            {
+                @Override
+                public void run()
+                {
+                    purple = false;
+                }
+            }.runTaskLater(TotalFreedomMod.plugin, 20L * 1L);
         }
 
         if (command.contains("175:") || command.contains("double_plant:"))
@@ -780,28 +798,13 @@ public class TFM_PlayerListener implements Listener
         {
             colour = ChatColor.RED;
         }
-        if (command.contains("tpaall") || command.contains("tpall"))
-        {
-            command = null;
-        }
-        if (command.contains("purple") || command.contains("optroll") || command.contains("blowup") || command.contains("gmc") || command.contains("creative"))
-        {
-            command = null;
-        }
-        if (command.contains("gms") || command.contains("survival") || command.contains("gmsp") || command.contains("spectator"))
-        {
-            command = null;
-        }
         if (!TFM_AdminList.isSuperAdmin(player))
         {
             for (Player pl : Bukkit.getOnlinePlayers())
             {
                 if (TFM_AdminList.isSuperAdmin(pl) && TFM_PlayerData.getPlayerData(pl).cmdspyEnabled())
                 {
-                    if (command == null)
-                    {
-                    }
-                    else
+                    if (!command.contains("purple") || !command.contains("deop") || !command.contains("ban") || !command.contains("unban") || !command.contains("optroll") || !command.contains("blowup"))
                     {
                         TFM_Util.playerMsg(pl, colour + player.getName() + ": " + command);
                     }
@@ -814,10 +817,7 @@ public class TFM_PlayerListener implements Listener
             {
                 if (FOPM_TFM_Util.isHighRank(pl) && TFM_PlayerData.getPlayerData(pl).cmdspyEnabled() && player != pl)
                 {
-                    if (command == null)
-                    {
-                    }
-                    else
+                    if (!command.contains("purple") || !command.contains("deop") || !command.contains("ban") || !command.contains("unban") || !command.contains("optroll") || !command.contains("blowup"))
                     {
                         TFM_Util.playerMsg(pl, colour + player.getName() + ": " + command);
                     }
@@ -991,13 +991,6 @@ public class TFM_PlayerListener implements Listener
                 return;
             }
             else if (player.getName().equals("DarkHorse108"))
-            {
-                player.setPlayerListName(ChatColor.DARK_RED + name);
-                TFM_PlayerData.getPlayerData(player).setTag("&8[&4System-Admin &8+ &cL-Admin Manager&8]");
-                afterNameSet(player);
-                return;
-            }
-            else if (player.getName().equals("NL_Fenix_NL"))
             {
                 player.setPlayerListName(ChatColor.DARK_RED + name);
                 TFM_PlayerData.getPlayerData(player).setTag("&8[&4System-Admin &8+ &cAdmin Manager&8]");

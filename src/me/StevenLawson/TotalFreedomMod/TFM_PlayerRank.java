@@ -25,8 +25,7 @@ public enum TFM_PlayerRank
     SENIOR("a " + ChatColor.LIGHT_PURPLE + "Senior Admin", ChatColor.LIGHT_PURPLE + "[SrA]"),
     OWNER("the " + ChatColor.DARK_RED + "§4Owner §band §9Founder §bof §cRubyFreedom§b. ", ChatColor.DARK_RED + "§8[§4Owner §9+ §9Founder§8]§9"),
     SYS_ADMIN("a " + ChatColor.DARK_RED + "System-Admin", ChatColor.DARK_RED + "[Sys-Admin]"),
-    PHOENIX("a " + ChatColor.DARK_RED + "System-Admin" + ChatColor.AQUA + " and a" + ChatColor.RED + "Admin Manager", ChatColor.DARK_RED + "[Sys-Admin + Admin MGR]"),
-    HORSE("a " + ChatColor.DARK_RED + "System-Admin" + ChatColor.AQUA + " and the " + ChatColor.RED + "Lead Admin Manager", ChatColor.DARK_RED + "[Sys-Admin + L-Admin MGR]"),
+    HORSE("a " + ChatColor.DARK_RED + "System-Admin" + ChatColor.AQUA + " and the " + ChatColor.RED + "Admin Manager", ChatColor.DARK_RED + "[Sys-Admin + Admin MGR]"),
     LEAD_DEVELOPER("the " + ChatColor.DARK_PURPLE + "Lead Developer" + ChatColor.AQUA + " of " + ChatColor.RED + "RubyFreedom", ChatColor.DARK_PURPLE + "[L-Dev]"),
     EXEC("an " + ChatColor.YELLOW + "Executive", ChatColor.YELLOW + "[Exec]"),
     CO_OWNER("a " + ChatColor.BLUE + "Co-Owner" + ChatColor.AQUA + " of " + ChatColor.RED + "RubyFreedom", ChatColor.BLUE + "[Co-Owner]"),
@@ -94,11 +93,6 @@ public enum TFM_PlayerRank
         else if (sender.getName().equals("DarkHorse108"))
         {
             return HORSE;
-        }
-
-        else if (sender.getName().equals("NL_Fenix_NL"))
-        {
-            return PHOENIX;
         }
 
         else if (sender.getName().equals("DarkGamingDronze"))

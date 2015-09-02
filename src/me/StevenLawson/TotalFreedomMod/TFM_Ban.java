@@ -146,7 +146,7 @@ public class TFM_Ban
 
         if (!reason.equals("none"))
         {
-            message.append("\nReason: ").append(reason);
+            message.append("\nReason: ").append(reason).append(" (").append(by).append(")");
         }
 
         if (getExpireUnix() != 0)
