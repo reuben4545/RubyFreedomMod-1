@@ -19,19 +19,12 @@ public class Command_reload extends TFM_Command
         TFM_Util.bcastMsg("Server is reloading. Please wait...", ChatColor.LIGHT_PURPLE);
 
         server.reload();
-        new BukkitRunnable()
-        {
-            @Override
-            public void run()
-            {
-                TFM_Util.adminAction(sender.getName(), "Disconnecting all players.", true);
+        TFM_Util.adminAction(sender.getName(), "Disconnecting all players.", true);
 
-                for (Player player : Bukkit.getOnlinePlayers())
-                {
-                    player.kickPlayer(ChatColor.RED + "RubyFreedom: You have been kicked by " + sender.getName() + "  because of a server reload or for another reason.");
-                }
-            }
-        }.runTaskLater(TotalFreedomMod.plugin, 20L * 1L);
+        for (Player player : Bukkit.getOnlinePlayers())
+        {
+            player.kickPlayer(ChatColor.GOLD + "[RubyFreedom] " + ChatColor.WHITE + "You have been kicked by " + sender.getName() + "  because of a server reload. Please relog.");
+        }
         return true;
     }
 }

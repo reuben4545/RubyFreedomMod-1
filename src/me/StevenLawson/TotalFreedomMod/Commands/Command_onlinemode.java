@@ -52,7 +52,7 @@ public class Command_onlinemode extends TFM_Command
                 {
                     for (Player player : server.getOnlinePlayers())
                     {
-                        player.kickPlayer("Server is activating \"online-mode=true\". Please reconnect.");
+                        player.kickPlayer(ChatColor.GOLD + "[RubyFreedom]" + ChatColor.WHITE + "Server is activating \"online-mode=true\". Please reconnect.");
                     }
                 }
 

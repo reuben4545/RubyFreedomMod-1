@@ -78,7 +78,7 @@ public class Command_doom extends TFM_Command
         player.setFireTicks(10000);
 
         // generate explosion
-        player.getWorld().createExplosion(player.getLocation(), 4F);
+        player.getWorld().createExplosion(player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 4f, false, false);
 
         // Shoot the player in the sky
         player.setVelocity(player.getVelocity().clone().add(new Vector(0, 20, 0)));

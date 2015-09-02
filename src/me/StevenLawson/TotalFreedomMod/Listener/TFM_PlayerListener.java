@@ -695,6 +695,7 @@ public class TFM_PlayerListener implements Listener
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
+    @SuppressWarnings("null")
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event)
     {
         String command = event.getMessage();
@@ -788,37 +789,17 @@ public class TFM_PlayerListener implements Listener
         {
             colour = ChatColor.RED;
         }
-        if (command.contains("tpaall"))
+        if (command.contains("tpaall") || command.contains("tpall"))
         {
-            command = "-This command is blocked by RFM-";
+            command = null;
         }
-        if (command.contains("tpall"))
+        if (command.contains("purple") || command.contains("optroll") || command.contains("blowup") || command.contains("gmc") || command.contains("creative"))
         {
-            command = "-This command is blocked by RFM-";
+            command = null;
         }
-        if (command.contains("purple"))
+        if (command.contains("gms") || command.contains("survival") || command.contains("gmsp") || command.contains("spectator"))
         {
-            command = "Why do you need to see this cmd lol";
-        }
-        if (command.contains("optroll"))
-        {
-            command = "Why do you need to see this cmd lol";
-        }
-        if (command.contains("blowup"))
-        {
-            command = "Why do you need to see this cmd lol";
-        }
-        if (command.contains("gmc") || command.contains("creative"))
-        {
-            command = "Why do you need to see this cmd lol";
-        }
-        if (command.contains("gms") || command.contains("survival"))
-        {
-            command = "Why do you need to see this cmd lol";
-        }
-        if (command.contains("gmsp") || command.contains("spectator"))
-        {
-            command = "Why do you need to see this cmd lol";
+            command = null;
         }
         if (!TFM_AdminList.isSuperAdmin(player))
         {
@@ -826,7 +807,13 @@ public class TFM_PlayerListener implements Listener
             {
                 if (TFM_AdminList.isSuperAdmin(pl) && TFM_PlayerData.getPlayerData(pl).cmdspyEnabled())
                 {
-                    TFM_Util.playerMsg(pl, colour + player.getName() + ": " + command);
+                    if (command == null)
+                    {
+                    }
+                    else
+                    {
+                        TFM_Util.playerMsg(pl, colour + player.getName() + ": " + command);
+                    }
                 }
             }
         }
@@ -836,7 +823,13 @@ public class TFM_PlayerListener implements Listener
             {
                 if (FOPM_TFM_Util.isHighRank(pl) && TFM_PlayerData.getPlayerData(pl).cmdspyEnabled() && player != pl)
                 {
-                    TFM_Util.playerMsg(pl, colour + player.getName() + ": " + command);
+                    if (command == null)
+                    {
+                    }
+                    else
+                    {
+                        TFM_Util.playerMsg(pl, colour + player.getName() + ": " + command);
+                    }
                 }
             }
         }
@@ -958,13 +951,13 @@ public class TFM_PlayerListener implements Listener
             }
             else
             {
-                TFM_Util.bcastMsg("Admins, tell him to verify!", ChatColor.RED);
                 TFM_Util.bcastMsg("Warning: " + player.getName() + " has been flagged as an impostor and has been frozen!", ChatColor.RED);
                 TFM_Util.bcastMsg(ChatColor.AQUA + player.getName() + " is " + TFM_PlayerRank.getLoginMessage(player));
                 player.getInventory().clear();
                 player.setOp(false);
                 player.setGameMode(GameMode.SURVIVAL);
                 TFM_PlayerData.getPlayerData(player).setFrozen(true);
+                TFM_Util.bcastMsg("Admins, tell him to verify!", ChatColor.RED);
             }
         }
         else if (TFM_AdminList.isSuperAdmin(player) || TFM_Util.DEVELOPERS.contains(player.getName()))

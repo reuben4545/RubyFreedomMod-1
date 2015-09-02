@@ -1,5 +1,6 @@
 package me.StevenLawson.TotalFreedomMod.Commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -12,8 +13,7 @@ public class Command_lolno extends TFM_Command
     public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
         sender_p.chat("Lolno. Just.. just.. go. just GO AWAY!");
-        sender.sendMessage("Although you can't ban in this command, It's just to make pepole go away. XD");
-        sender_p.chat("/expel");
+        Bukkit.dispatchCommand(sender, "expel");
         return true;
     }
 }

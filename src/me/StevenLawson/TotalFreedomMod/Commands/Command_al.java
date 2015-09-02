@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = AdminLevel.SUPER, source = SourceType.BOTH)
-@CommandParameters(description = "Shows all admins", usage = "/<command>")
+@CommandParameters(description = "Shows all admins", usage = "/<command>", aliases = "adminlist")
 public class Command_al extends TFM_Command
 {
     @Override
@@ -24,7 +24,9 @@ public class Command_al extends TFM_Command
         sender.sendMessage(ChatColor.GOLD + "Alosion and MysteriAce");
         sender.sendMessage(ChatColor.RED + "- System Admins -");
         sender.sendMessage(ChatColor.RED + "cowgomooo12, eddieusselman, xYurippe, Stampy100, xBadDawgx");
-        sender.sendMessage(ChatColor.DARK_PURPLE + "The Lead Dev is Valencia_Orange and the only other real dev is tylerhyperHD.");
+        sender.sendMessage(ChatColor.DARK_PURPLE + "Lead Dev: Valencia_Orange");
+        sender.sendMessage(ChatColor.DARK_PURPLE + "Co-Lead Dev: DarkGamingDronze");
+        sender.sendMessage(ChatColor.DARK_PURPLE + "Dev: tylerhyperHD");
         sender.sendMessage(ChatColor.BLUE + "The Co-Owners are TaahThePenguin and LegendIsAwesomes");
         sender.sendMessage(ChatColor.BLUE + "The Owners are reuben4545, falceso, and DarkGamingDronze");
         return true;

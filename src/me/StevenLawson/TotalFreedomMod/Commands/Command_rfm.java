@@ -1,6 +1,5 @@
 package me.StevenLawson.TotalFreedomMod.Commands;
 
-import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_MainConfig;
 import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
 import me.StevenLawson.TotalFreedomMod.TFM_BanManager;
@@ -15,11 +14,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/*
- * See https://github.com/TotalFreedom/License - This file may not be edited or removed.
- */
 @CommandPermissions(level = AdminLevel.ALL, source = SourceType.BOTH)
-@CommandParameters(description = "Shows information about ManUtdFreedomMod or reloads it", usage = "/<command> [reload]")
+@CommandParameters(description = "Shows information about RubyFreedomMod or reloads it", usage = "/<command> [reload]")
 public class Command_rfm extends TFM_Command
 {
     @Override
@@ -45,7 +41,7 @@ public class Command_rfm extends TFM_Command
             TFM_BanManager.load();
             TFM_CommandBlocker.load();
 
-            final String message = String.format("RubyFreedomMod 0.1 BETA reloaded.",
+            final String message = String.format("RubyFreedomMod v" + plugin.getDescription().getVersion() + "reloaded.",
                     TotalFreedomMod.pluginName,
                     TotalFreedomMod.pluginVersion,
                     TotalFreedomMod.buildNumber);
@@ -56,10 +52,10 @@ public class Command_rfm extends TFM_Command
         }
 
         TFM_Util.playerMsg(sender_p, " §4§lRubyFreedomMod:", ChatColor.GOLD);
-        TFM_Util.playerMsg(sender_p, "Made by: Valencia_Orange, tylerhyperHD, DarkGamingDronze and Falceso", ChatColor.GREEN);
-        TFM_Util.playerMsg(sender_p, "Latley Developet by: tylerhyperHD", ChatColor.GREEN);
+        TFM_Util.playerMsg(sender_p, "Made by: Valencia_Orange, tylerhyperHD, DarkGamingDronze, and falceso", ChatColor.GREEN);
+        TFM_Util.playerMsg(sender_p, "Last developed by: tylerhyperHD", ChatColor.GREEN);
         TFM_Util.playerMsg(sender_p, "§5Made in the image of the §9TotalFreedomMod §5but with more §6features §5and §eflexibility.", ChatColor.GOLD);
-        TFM_Util.playerMsg(sender_p, "§9This plugin is version §72.0", ChatColor.GOLD);
+        TFM_Util.playerMsg(sender_p, "§9This is RubyFreedomMod v" + plugin.getDescription().getVersion(), ChatColor.GOLD);
 
         return true;
     }

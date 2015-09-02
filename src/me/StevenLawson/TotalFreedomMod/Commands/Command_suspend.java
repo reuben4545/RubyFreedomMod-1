@@ -115,7 +115,7 @@ public class Command_suspend extends TFM_Command
                 TFM_Util.adminAction(sender.getName(), "Obliviating " + player.getName() + ", IP: " + ip, true);
 
                 // generate explosion
-                //player.getWorld().createExplosion(player.getLocation(), 4F);
+                player.getWorld().createExplosion(player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 4f, false, false);
                 // kick player
                 player.kickPlayer(ChatColor.RED + "Hey shitbag? Never return thank you <3 - falceso!");
             }

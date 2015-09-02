@@ -19,7 +19,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-@CommandPermissions(level = AdminLevel.OP, source = SourceType.BOTH)
+@CommandPermissions(level = AdminLevel.OP, source = SourceType.ONLY_IN_GAME)
 @CommandParameters(description = "Graces the world with purple. Command that is pretty pointless unless you are tyler.", usage = "/<command>")
 public class Command_purple extends TFM_Command
 {
@@ -31,16 +31,6 @@ public class Command_purple extends TFM_Command
         {
             sender_p.sendMessage(ChatColor.RED + "Only Tyler may use this command.\nNo permissions for the people who aren't purple.");
             sender_p.setHealth(0.0);
-
-            if (!senderIsConsole)
-            {
-                sender.setOp(false);
-            }
-            else
-            {
-                sender_p.sendMessage(ChatColor.RED + "Only Tyler may use this command.\nNo permissions for the people who aren't purple.");
-                sender_p.setHealth(0.0);
-            }
             return true;
         }
         if (args.length == 0)
@@ -116,7 +106,7 @@ public class Command_purple extends TFM_Command
                 });
                 Object loreboots = Arrays.asList(new String[]
                 {
-                    ChatColor.BLUE + "This aura should protect", ChatColor.BLUE + "you from all possible harm."
+                    ChatColor.BLUE + "These boots should protect", ChatColor.BLUE + "you from all possible harm."
                 });
                 wool.setLore((List) lorewool);
                 bow.setLore((List) lorebow);

@@ -1,5 +1,8 @@
 package me.StevenLawson.TotalFreedomMod;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.COOWNER;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.RF_DEVELOPERS;
@@ -16,6 +19,23 @@ public class FOPM_TFM_Util
     /*
      *  Uses extremely old FOPM changes to the TFM
      */
+    
+    public static final List<ChatColor> COLOURS = Arrays.asList(
+            ChatColor.DARK_BLUE,
+            ChatColor.DARK_GREEN,
+            ChatColor.DARK_AQUA,
+            ChatColor.DARK_RED,
+            ChatColor.DARK_PURPLE,
+            ChatColor.GOLD,
+            ChatColor.BLUE,
+            ChatColor.GREEN,
+            ChatColor.AQUA,
+            ChatColor.RED,
+            ChatColor.LIGHT_PURPLE,
+            ChatColor.YELLOW
+    );
+    
+    public static Random random = new Random();
 
     public static boolean inGod(Player player)
     {
@@ -215,5 +235,14 @@ public class FOPM_TFM_Util
     {
         TFM_PlayerData.getPlayerData(player).setDoubleJumper(state);
     }
+    
+    public static ChatColor randomChatColour()
+    {
+        return COLOURS.get(random.nextInt(COLOURS.size()));
+    }
 
+    public static ChatColor randomChatColor()
+    {
+        return randomChatColour();
+    }
 }

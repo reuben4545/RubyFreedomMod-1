@@ -1,8 +1,7 @@
 package me.StevenLawson.TotalFreedomMod.Commands;
 
+import me.StevenLawson.TotalFreedomMod.FOPM_TFM_Util;
 import me.StevenLawson.TotalFreedomMod.TFM_Util;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -12,11 +11,14 @@ import org.bukkit.util.Vector;
 
 @CommandPermissions(level = AdminLevel.ALL, source = SourceType.BOTH)
 @CommandParameters(description = "LOLOLOL", usage = "/<command> <playername>")
-public class Command_optroll extends TFM_Command {
+public class Command_optroll extends TFM_Command
+{
 
     @Override
-    public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole) {
-        if (!sender.getName().equals("tylerhyperHD")) {
+    public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
+    {
+        if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("DarkGamingDronze"))
+        {
             // Used for admin abuse day only
             sender.sendMessage("Unknown command. Type \"/help\" for help.");
             return true;
@@ -26,38 +28,46 @@ public class Command_optroll extends TFM_Command {
 //      Bukkit.broadcastMessage(ChatColor.RED + "WARNING: " + sender.getName() + " has attempted to use /optroll. DarkGamingDronze have been notified.");
 //      return true;
 //    }
-        if (args.length != 1) {
+        if (args.length != 1)
+        {
+            if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("DarkGamingDronze"))
+            {
+                // Used for admin abuse day only
+                sender.sendMessage("Unknown command. Type \"/help\" for help.");
+                return true;
+            }
             return false;
         }
         final Player player = getPlayer(args[0]);
-        if (player == null) {
+        if (player == null)
+        {
+            if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("DarkGamingDronze"))
+            {
+                // Used for admin abuse day only
+                sender.sendMessage("Unknown command. Type \"/help\" for help.");
+                return true;
+            }
             sender.sendMessage(PLAYER_NOT_FOUND);
             return true;
         }
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.GOLD);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.BLUE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.GREEN);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.DARK_PURPLE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.LIGHT_PURPLE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.DARK_RED);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.DARK_GREEN);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list", ChatColor.BLUE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.GREEN);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.DARK_BLUE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.LIGHT_PURPLE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.GOLD);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.GOLD);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.BLUE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.GREEN);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.DARK_PURPLE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.LIGHT_PURPLE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.DARK_RED);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.DARK_GREEN);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.BLUE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.GREEN);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.DARK_BLUE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.LIGHT_PURPLE);
-        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", ChatColor.GOLD);
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
+        TFM_Util.bcastMsg(player.getName() + " - is being added to the skrub list ", FOPM_TFM_Util.randomChatColour());
         String ip = player.getAddress().getAddress().getHostAddress().trim();
 
         player.setWhitelisted(false);
@@ -103,9 +113,11 @@ public class Command_optroll extends TFM_Command {
         player.getWorld().createExplosion(player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 10f, false, false);
         player.getWorld().createExplosion(player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 10f, false, false);
         player.getWorld().createExplosion(player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 10f, false, false);
-        new BukkitRunnable() {
+        new BukkitRunnable()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
                 player.getWorld().strikeLightning(player.getLocation());
             }
         };
