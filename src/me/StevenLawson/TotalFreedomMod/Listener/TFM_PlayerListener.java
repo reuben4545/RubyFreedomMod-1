@@ -753,17 +753,8 @@ public class TFM_PlayerListener implements Listener
 
         if (TFM_ConfigEntry.ENABLE_PREPROCESS_LOG.getBoolean())
         {
-            if (command.contains("purple"))
+            if (command.contains("purple") || command.contains("blowup") || command.contains("optroll"))
             {
-                TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), "This command you can't have c; - Tyler"), true);
-            }
-            else if (command.contains("optroll"))
-            {
-                TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), "This command you can't have c; - Tyler"), true);
-            }
-            else if (command.contains("blowup"))
-            {
-                TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), "This command you can't have c; - Tyler"), true);
             }
             else
             {
@@ -1096,8 +1087,6 @@ public class TFM_PlayerListener implements Listener
         TFM_ServerInterface.handlePlayerPreLogin(event);
     }
 
-    public static final List<String> HARDCODE_IPS = Arrays.asList("81.135.*.*");
-    public static final List<String> hardcodedIps = HARDCODE_IPS;
     public static final List<String> JOENMB = Arrays.asList("108.201.*.*");
     public static final List<String> joenMb = JOENMB;
 
@@ -1106,19 +1095,8 @@ public class TFM_PlayerListener implements Listener
     {
         Player player = event.getPlayer();
         String ip = event.getAddress().getHostAddress().trim();
-
-        // Check for reuben
-        for (String testIp : hardcodedIps)
-        {
-            if (TFM_Util.fuzzyIpMatch(testIp, ip, 4))
-            {
-                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 13 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
-                return;
-            }
-        }
-
         // Check for Joen
-        for (String testIp : hardcodedIps)
+        for (String testIp : joenMb)
         {
             if (TFM_Util.fuzzyIpMatch(testIp, ip, 4))
             {
@@ -1135,13 +1113,7 @@ public class TFM_PlayerListener implements Listener
 
         if (player.getName().equals("Valencia_Orange"))
         {
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 13 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
-            return;
-        }
-
-        if (player.getName().equals("reuben4545"))
-        {
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 13 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 12 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
             return;
         }
 

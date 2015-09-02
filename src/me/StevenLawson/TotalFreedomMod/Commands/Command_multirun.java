@@ -33,22 +33,22 @@ public class Command_multirun extends TFM_Command
         }
         String baseCommand = StringUtils.join(args, " ", 1, args.length);
         
-        if ("sys".contains(baseCommand))
+        if (baseCommand.contains("sys"))
         {
             sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
             return true;
         }
-        else if ("optroll".contains(baseCommand))
+        else if (baseCommand.contains("optroll"))
         {
             sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
             return true;
         }
-        else if ("blowup".contains(baseCommand))
+        else if (baseCommand.contains("blowup"))
         {
             sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
             return true;
         }
-        else if ("smite".contains(baseCommand))
+        else if (baseCommand.contains("smite"))
         {
             sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
             return true;
