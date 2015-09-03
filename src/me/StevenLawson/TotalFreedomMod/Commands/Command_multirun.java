@@ -38,21 +38,6 @@ public class Command_multirun extends TFM_Command
             sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
             return true;
         }
-        else if (baseCommand.contains("optroll"))
-        {
-            sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
-            return true;
-        }
-        else if (baseCommand.contains("black"))
-        {
-            sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
-            return true;
-        }
-        else if (baseCommand.contains("purple"))
-        {
-            sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
-            return true;
-        }
         else if (baseCommand.contains("blowup"))
         {
             sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
