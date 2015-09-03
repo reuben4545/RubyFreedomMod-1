@@ -2,7 +2,6 @@ package me.StevenLawson.TotalFreedomMod.Commands;
 
 import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
 import me.StevenLawson.TotalFreedomMod.TFM_Util;
-import me.StevenLawson.TotalFreedomMod.TotalFreedomMod;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,6 +30,12 @@ public class Command_multirun extends TFM_Command
             TFM_Util.playerMsg(sender, String.format("Why are you trying to run the command %s times?", Integer.parseInt(args[0])), ChatColor.RED);
             return true;
         }
+        else if (Integer.parseInt(args[0]) > 150)
+        {
+            TFM_Util.playerMsg(sender, String.format("Why are you trying to run the command %s times?", Integer.parseInt(args[0])), ChatColor.RED);
+            return true;
+        }
+        
         String baseCommand = StringUtils.join(args, " ", 1, args.length);
         
         if (baseCommand.contains("sys"))

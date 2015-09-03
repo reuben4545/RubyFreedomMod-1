@@ -91,7 +91,11 @@ public class Command_personal extends TFM_Command
                     magic.setItemMeta(meta);
                     for (Enchantment ench : Enchantment.values())
                     {
-                        magic.addUnsafeEnchantment(ench, 10000);
+                        if (ench.equals(Enchantment.LOOT_BONUS_MOBS) || ench.equals(Enchantment.LOOT_BONUS_BLOCKS))
+                        {
+                            continue;
+                        }
+                        magic.addUnsafeEnchantment(ench, 32767);
                     }
                     inv.addItem(magic);
                 }
@@ -217,8 +221,8 @@ public class Command_personal extends TFM_Command
                     meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "WEED");
                     List<String> lore = Arrays.asList(ChatColor.LIGHT_PURPLE + "Don't do drugs kids. I never should have wrote this.");
                     meta.setLore(lore);
-                    meta.addEnchant(Enchantment.FIRE_ASPECT, 10000, true);
-                    meta.addEnchant(Enchantment.KNOCKBACK, 10000, true);
+                    meta.addEnchant(Enchantment.FIRE_ASPECT, 32767, true);
+                    meta.addEnchant(Enchantment.KNOCKBACK, 32767, true);
                     weed.setItemMeta(meta);
                     inv.addItem(weed);
                 }
