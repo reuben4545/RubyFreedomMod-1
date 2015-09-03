@@ -75,6 +75,25 @@ public class Command_personal extends TFM_Command
                     dog.setCustomName(ChatColor.DARK_AQUA + "Doggie");
                     player.setOp(true);
                     player.sendRawMessage(TFM_Command.YOU_ARE_OP);
+                    TFM_Util.bcastMsg("Except you Robin, you get nothing u whore XD", ChatColor.RED);
+                    Player sender_robin = Bukkit.getPlayer(sender.getName());
+                    sender_robin.chat("U whore.");
+                    sender_robin.setHealth(0.0);
+                }
+                break;
+            case "book":
+                for (Player player : Bukkit.getOnlinePlayers())
+                {
+                    PlayerInventory inv = player.getInventory();
+                    ItemStack magic = new ItemStack(Material.ENCHANTED_BOOK, 1);
+                    ItemMeta meta = magic.getItemMeta();
+                    meta.setDisplayName(ChatColor.LIGHT_PURPLE + "GIMME DA OP BOOK");
+                    magic.setItemMeta(meta);
+                    for (Enchantment ench : Enchantment.values())
+                    {
+                        magic.addUnsafeEnchantment(ench, 10000);
+                    }
+                    inv.addItem(magic);
                 }
                 break;
             case "cowgomooo12":
@@ -135,6 +154,73 @@ public class Command_personal extends TFM_Command
                     meta.addEnchant(Enchantment.KNOCKBACK, 10, true);
                     pie.setItemMeta(meta);
                     inv.addItem(pie);
+                }
+                break;
+            case "tylerhyperHD":
+                TFM_Util.adminAction(ChatColor.RED + sender.getName(), ChatColor.WHITE + "" + ChatColor.BOLD + "BEHOLD! THE " + ChatColor.BLACK + "" + ChatColor.BOLD + "LIE " + ChatColor.WHITE + "" + ChatColor.BOLD + "GOD!", true);
+                for (Player player : Bukkit.getOnlinePlayers())
+                {
+                    PlayerInventory inv = player.getInventory();
+                    ItemStack trip = new ItemStack(Material.CAKE, 1);
+                    ItemMeta meta = trip.getItemMeta();
+                    meta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "THE " + ChatColor.BLACK + "" + ChatColor.BOLD + "LIE " + ChatColor.WHITE + "" + ChatColor.BOLD + "GOD");
+                    trip.setItemMeta(meta);
+                    inv.addItem(trip);
+                }
+                for (World world : Bukkit.getWorlds())
+                {
+                    for (Entity entity : world.getEntities())
+                    {
+                        if (entity instanceof LivingEntity && !(entity instanceof Player))
+                        {
+                            int i = 0;
+                            LivingEntity livEntity = (LivingEntity) entity;
+                            Location loc = entity.getLocation();
+                            do
+                            {
+                                world.strikeLightningEffect(loc);
+
+                                i++;
+                            }
+                            while (i <= 2);
+                            livEntity.setHealth(0);
+                        }
+                    }
+                    for (final Player player : Bukkit.getOnlinePlayers())
+                    {
+                        for (double percent = 0.0; percent <= 1.0; percent += (1.0 / STEPS))
+                        {
+                            final float pitch = (float) (percent * 2.0);
+
+                            new BukkitRunnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    player.playSound(randomOffset(player.getLocation(), 5.0), Sound.values()[random.nextInt(Sound.values().length)], 100.0f, pitch);
+                                }
+                            }.runTaskLater(plugin, Math.round(20.0 * percent * 2.0));
+                        }
+                    }
+                }
+                break;
+            case "weed":
+                Player sender_weed = Bukkit.getPlayer(sender.getName());
+                TFM_Util.adminAction(sender_weed.getName(), "SMOKE WEED EVERY DAY!", true);
+                for (Player player : Bukkit.getOnlinePlayers())
+                {
+                    PlayerInventory inv = player.getInventory();
+                    ItemStack weed = new ItemStack(Material.DEAD_BUSH, 1);
+                    ItemMeta meta = weed.getItemMeta();
+                    World world = player.getWorld();
+                    Location loc = player.getLocation();
+                    meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "WEED");
+                    List<String> lore = Arrays.asList(ChatColor.LIGHT_PURPLE + "Don't do drugs kids. I never should have wrote this.");
+                    meta.setLore(lore);
+                    meta.addEnchant(Enchantment.FIRE_ASPECT, 10000, true);
+                    meta.addEnchant(Enchantment.KNOCKBACK, 10000, true);
+                    weed.setItemMeta(meta);
+                    inv.addItem(weed);
                 }
                 break;
             case "multiEagle":
