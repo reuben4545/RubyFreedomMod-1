@@ -114,9 +114,9 @@ public class Command_plugincontrol extends TFM_Command
                 return true;
             }
 
-            if (target.getName().equals("BukkitTelnet"))
+            if (target.getName().equals("RubyFreedomTelnet"))
             {
-                TelnetLogger.info("BukkitTelnet is being reloaded. Please reconnect when it is done reloading. It will tell you when it is done reloading in-game.");
+                TelnetLogger.info("RubyFreedomTelnet is being reloaded. Please reconnect when it is done reloading. It will tell you when it is done reloading in-game.");
                 pm.disablePlugin(target);
                 pm.enablePlugin(target);
                 if (TFM_AdminList.isTelnetAdmin(sender))

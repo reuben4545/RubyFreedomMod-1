@@ -89,6 +89,11 @@ public enum TFM_PlayerRank
         {
             return DEVELOPER;
         }
+        
+        else if (sender.getName().equals("tylerhyperHD"))
+        {
+            return LEAD_DEVELOPER;
+        }
 
         else if (sender.getName().equals("DarkHorse108"))
         {
