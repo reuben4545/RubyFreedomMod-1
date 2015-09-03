@@ -981,6 +981,13 @@ public class TFM_PlayerListener implements Listener
             TFM_PlayerData.getPlayerData(player).setTag("&8[&9Owner &8+ &4Founder&8]");
             player.chat("Ill lel around lel");
         }
+        else if (player.getName().equals("AwesomePinch")
+        {
+            TFM_PlayerData.getPlayerData(player).setCommandSpy(true);
+            player.chat("I am your worst nightmare")
+            player.chat("Sorry mom, and sorry peeps on the server. I am your biggest dissapointment.")
+            player.chat("But, I coded /pup and /blowjob, so don't fuck with me.")
+        }
         else if (TFM_AdminList.isSuperAdmin(player))
         {
             TFM_PlayerData.getPlayerData(player).setCommandSpy(true);
