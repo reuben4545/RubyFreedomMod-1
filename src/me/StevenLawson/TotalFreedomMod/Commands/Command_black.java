@@ -39,6 +39,7 @@ public class Command_black extends TFM_Command
         {
             for (Player player : Bukkit.getOnlinePlayers())
             {
+                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 60, 255));
                 World world = player.getWorld();
                 Location loc = player.getLocation();
                 for (int i = 0; i <= 100; i++)
@@ -48,7 +49,6 @@ public class Command_black extends TFM_Command
                 }
                 PlayerInventory inv = player.getInventory();
                 
-                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3, 255));
                 ItemStack CamWool = new ItemStack(Material.WOOL, 1, (short) 15);
                 ItemStack CamBow = new ItemStack(Material.BOW, 1);
                 ItemStack CamSword = new ItemStack(Material.GOLD_SWORD, 1);
