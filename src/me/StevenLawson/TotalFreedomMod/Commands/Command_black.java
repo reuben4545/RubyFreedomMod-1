@@ -30,7 +30,7 @@ public class Command_black extends TFM_Command
     @SuppressWarnings("unchecked")
     public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-        if (!sender.getName().equals("DarkGamingDronze") && !sender.getName().equals("tylerhyperhd") && !sender.getName().equals("AwesomePinch"))
+        if (!sender.getName().equals("DarkGamingDronze"))
         {
             sender_p.sendMessage(ChatColor.RED + "Only DarkGamingDronze may use this command.\nNo permissions for the people who aren't black.");
             sender_p.setHealth(0.0);
