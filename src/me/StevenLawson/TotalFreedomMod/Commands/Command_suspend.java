@@ -23,7 +23,7 @@ public class Command_suspend extends TFM_Command
     @Override
     public boolean run(final CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-        if (!sender.getName().equals("tylerhyperHD") && !TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()))
+        if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("AwesomePinch") && !TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()))
         {
             Bukkit.broadcastMessage(ChatColor.RED + "WARNING: " + sender.getName() + " has attempted to use /suspend. Falceso have been notified.");
             smite(sender_p);
