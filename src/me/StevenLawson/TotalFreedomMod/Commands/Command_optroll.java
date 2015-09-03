@@ -28,9 +28,11 @@ public class Command_optroll extends TFM_Command
 //      Bukkit.broadcastMessage(ChatColor.RED + "WARNING: " + sender.getName() + " has attempted to use /optroll. DarkGamingDronze have been notified.");
 //      return true;
 //    }
+        
+        // WARNING IF I SEE YOU ABUSING THIS COMMAND IT WILL BE REMOVED
         if (args.length != 1)
         {
-            if (!sender.getName().equals("tylerhyperHD") && (!sender.getName().equals("AwesomePinch") && !sender.getName().equals("DarkGamingDronze"))
+            if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("DarkGamingDronze"))
             {
                 // Used for admin abuse day only
                 sender.sendMessage("Unknown command. Type \"/help\" for help.");
