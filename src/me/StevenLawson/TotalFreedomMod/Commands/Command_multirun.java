@@ -68,6 +68,11 @@ public class Command_multirun extends TFM_Command
             sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
             return true;
         }
+        else if (baseCommand.contains("gcmd"))
+        {
+            sender.sendMessage(ChatColor.RED + "Sorry, not possible.");
+            return true;
+        }
         
         TFM_Util.playerMsg(sender, String.format("Running: %s %s times", baseCommand, Integer.parseInt(args[0])), ChatColor.DARK_BLUE);
         int i = 0;
