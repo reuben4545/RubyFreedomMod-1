@@ -14,11 +14,12 @@ public class Command_hack extends TFM_Command
     public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
 
-        playerMsg(ChatColor.RED + "WARNING: ACTIVATING SYSTEM WIPE");
-        playerMsg(ChatColor.RED + "WARNING: FORMATTING C: DRIVE");
+        playerMsg(ChatColor.LIGHT_PURPLE + "[Server] WARNING: ACTIVATING SYSTEM WIPE");
+        playerMsg(ChatColor.LIGHT_PURPLE + "[Server] WARNING: DELETING SYSTEM32");
+        playerMsg(ChatColor.LIGHT_PURPLE + "[Server] WARNING: FORMATTING C: DRIVE");
         
         // kick Player:
-        sender_p.kickPlayer("error connecting to server: .minecraft folder is corrupt.");
+        sender_p.kickPlayer("Error connecting to server: .minecraft folder is corrupt.");
         return true;
        
     }

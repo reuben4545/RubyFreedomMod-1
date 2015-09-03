@@ -23,7 +23,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 @CommandPermissions(level = AdminLevel.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Graces the world with blackness. Command that is pretty pointless unless you are tyler.", usage = "/<command>")
+@CommandParameters(description = "Graces the world with blackness. Command that is pretty pointless unless you are black.", usage = "/<command>", aliases = "nigga")
 public class Command_black extends TFM_Command
 {
     @Override
