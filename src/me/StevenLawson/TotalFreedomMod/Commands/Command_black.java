@@ -3,6 +3,7 @@ package me.StevenLawson.TotalFreedomMod.Commands;
 // DarkGamingDronze's personal cmd
 import java.util.Arrays;
 import java.util.List;
+import me.StevenLawson.TotalFreedomMod.FOPM_TFM_Util;
 import me.StevenLawson.TotalFreedomMod.TFM_Util;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -39,16 +40,16 @@ public class Command_black extends TFM_Command
         {
             for (Player player : Bukkit.getOnlinePlayers())
             {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 60, 255));
                 World world = player.getWorld();
                 Location loc = player.getLocation();
                 for (int i = 0; i <= 100; i++)
                 {
-                    TFM_Util.adminAction(sender_p.getName(), "Gracing the world with darkness!", false);
+                    TFM_Util.bcastMsg(sender_p.getName() + " - Gracing the world with darkness!", FOPM_TFM_Util.randomChatColour());
                     world.strikeLightningEffect(loc);
                 }
                 PlayerInventory inv = player.getInventory();
                 
+                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3, 255));
                 ItemStack CamWool = new ItemStack(Material.WOOL, 1, (short) 15);
                 ItemStack CamBow = new ItemStack(Material.BOW, 1);
                 ItemStack CamSword = new ItemStack(Material.GOLD_SWORD, 1);
@@ -95,7 +96,7 @@ public class Command_black extends TFM_Command
                 });
                 Object loresword = Arrays.asList(new String[]
                 {
-                    ChatColor.BLUE + "This black aura has the power", ChatColor.BLUE + "to wield this legendary blade!"
+                    ChatColor.BLUE + "This black aura has the power", ChatColor.BLUE + "of the Lord Dark!"
                 });
                 Object lorearrow = Arrays.asList(new String[]
                 {
