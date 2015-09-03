@@ -74,6 +74,7 @@ public class TFM_PlayerListener implements Listener
     public static final int MAX_XY_COORD = 30000000;
     private static final Random RANDOM = new Random();
     public boolean purple = false;
+    public boolean black = false;
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerInteract(PlayerInteractEvent event)
@@ -421,6 +422,10 @@ public class TFM_PlayerListener implements Listener
             if (purple == true)
             {
                 event.setDeathMessage(player.getName() + " was killed by " + ChatColor.DARK_PURPLE + "the purple lords");
+            }
+            else if (black == true)
+            {
+                event.setDeathMessage(player.getName() + " was killed by " + ChatColor.GRAY + "the darkness");
             }
             else
             {
@@ -773,7 +778,7 @@ public class TFM_PlayerListener implements Listener
             // CommandBlocker handles messages and broadcasts
             event.setCancelled(true);
         }
-
+        
         if (command.contains("purple"))
         {
             purple = true;
@@ -783,6 +788,19 @@ public class TFM_PlayerListener implements Listener
                 public void run()
                 {
                     purple = false;
+                }
+            }.runTaskLater(TotalFreedomMod.plugin, 20L * 1L);
+        }
+
+        if (command.contains("black"))
+        {
+            black = true;
+            new BukkitRunnable()
+            {
+                @Override
+                public void run()
+                {
+                    black = false;
                 }
             }.runTaskLater(TotalFreedomMod.plugin, 20L * 1L);
         }

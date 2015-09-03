@@ -214,6 +214,26 @@ public class TFM_ServerInterface
             return;
         }
 
+        for (String testPlayer : TFM_Util.permbannedNames)
+        {
+            if (testPlayer.equalsIgnoreCase(username))
+            {
+                event.disallow(Result.KICK_OTHER,
+                        ChatColor.RED + "You have been hardcoded to a permban list, fuck off you twat.");
+                return;
+            }
+        }
+
+        for (String testIp : TFM_Util.permbannedIps)
+        {
+            if (TFM_Util.fuzzyIpMatch(testIp, ip, 4))
+            {
+                event.disallow(Result.KICK_OTHER,
+                        ChatColor.RED + "You have been hardcoded to a permban list, fuck off you twat.");
+                return;
+            }
+        }
+        
         // IP ban
         if (TFM_BanManager.isIpBanned(ip))
         {

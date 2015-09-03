@@ -1,5 +1,5 @@
 #
-# TotalFreedomMod v4.3 Configuration
+# RubyFreedomMod v2.1 Configuration
 # by Madgeek1450 and Prozza
 #
 
@@ -228,7 +228,7 @@ announcer:
     - 'You may view all online administrators via "/list -a"'
     - 'Save your buildings via WorldEdit!  http://rubyfreedom.boards.net/ for more information!'
     - 'Famous players, such as Notch, are always fake!  We are an offline/cracked server!'
-    - 'falceso is the new official RubyFreedom owner.'
+    - 'falceso and DarkGamingDronze are the RubyFreedom owners.'
     - 'Server lagging?  Check the lag via "/tps"'
     - 'You are allowed to record and stream videos on RubyFreedom :D'
     - 'Player vs Player while in creative/god mode it forbidden!'
