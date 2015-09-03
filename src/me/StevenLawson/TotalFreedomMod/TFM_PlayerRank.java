@@ -30,7 +30,7 @@ public enum TFM_PlayerRank
     EXEC("an " + ChatColor.YELLOW + "Executive", ChatColor.YELLOW + "[Exec]"),
     CO_OWNER("a " + ChatColor.BLUE + "Co-Owner" + ChatColor.AQUA + " of " + ChatColor.RED + "RubyFreedom", ChatColor.BLUE + "[Co-Owner]"),
     MYSTERI("a " + ChatColor.GOLD + "Potato Caek", ChatColor.RED + "[Mysteri]"),
-    DARK("an " + ChatColor.BLUE + "Owner" + ChatColor.AQUA + " and the " + ChatColor.DARK_PURPLE + "Co-Chief Developer", ChatColor.translateAlternateColorCodes('&', "&8[&4Owner &8+ &9Founder&8]")),
+    DARK("an " + ChatColor.BLUE + "Owner and founder" + ChatColor.AQUA + " and the " + ChatColor.DARK_PURPLE + "Co-Chief Developer", ChatColor.translateAlternateColorCodes('&', "&8[&4Owner &8+ &9Founder&8]&9")),
     CONSOLE("the " + ChatColor.DARK_PURPLE + "Console", ChatColor.DARK_PURPLE + "[Console]");
     private final String loginMessage;
     private final String prefix;
@@ -88,11 +88,6 @@ public enum TFM_PlayerRank
         else if (DEVELOPERS.contains(sender.getName()))
         {
             return DEVELOPER;
-        }
-        
-        else if (sender.getName().equals("tylerhyperHD"))
-        {
-            return LEAD_DEVELOPER;
         }
 
         else if (sender.getName().equals("DarkHorse108"))
