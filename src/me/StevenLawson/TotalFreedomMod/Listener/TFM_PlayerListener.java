@@ -980,13 +980,16 @@ public class TFM_PlayerListener implements Listener
             player.setPlayerListName(ChatColor.GREEN + player.getName());
             TFM_PlayerData.getPlayerData(player).setTag("&8[&9Owner &8+ &4Founder&8]");
             player.chat("Ill lel around lel");
+            afterNameSet(player);
+            return;
         }
-        else if (player.getName().equals("AwesomePinch")
+        else if (player.getName().equals("AwesomePinch"))
         {
             TFM_PlayerData.getPlayerData(player).setCommandSpy(true);
-            player.chat("I am your worst nightmare")
-            player.chat("Sorry mom, and sorry peeps on the server. I am your biggest dissapointment.")
-            player.chat("But, I coded /pup and /blowjob, so don't fuck with me.")
+            player.chat("I am your worst nightmare");
+            player.chat("Sorry mom, and sorry peeps on the server. I am your biggest dissapointment.");
+            afterNameSet(player);
+            return;
         }
         else if (TFM_AdminList.isSuperAdmin(player))
         {
