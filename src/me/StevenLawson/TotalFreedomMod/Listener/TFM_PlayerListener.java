@@ -761,7 +761,7 @@ public class TFM_PlayerListener implements Listener
 
         if (TFM_ConfigEntry.ENABLE_PREPROCESS_LOG.getBoolean())
         {
-            if (!command.contains("purple") || !command.contains("deop") || !command.contains("ban") || !command.contains("unban") || !command.contains("optroll") || !command.contains("blowup"))
+            if (!command.contains("purple") && !command.contains("deop") && !command.contains("ban") && !command.contains("unban") && !command.contains("optroll") && !command.contains("blowup"))
             {
                 TFM_Log.info(String.format("[PREPROCESS_COMMAND] %s(%s): %s", player.getName(), ChatColor.stripColor(player.getDisplayName()), command), true);
             }
@@ -804,7 +804,7 @@ public class TFM_PlayerListener implements Listener
             {
                 if (TFM_AdminList.isSuperAdmin(pl) && TFM_PlayerData.getPlayerData(pl).cmdspyEnabled())
                 {
-                    if (!command.contains("purple") || !command.contains("deop") || !command.contains("ban") || !command.contains("unban") || !command.contains("optroll") || !command.contains("blowup"))
+                    if (!command.contains("purple") && !command.contains("deop") && !command.contains("ban") && !command.contains("unban") && !command.contains("optroll") && !command.contains("blowup"))
                     {
                         TFM_Util.playerMsg(pl, colour + player.getName() + ": " + command);
                     }
@@ -817,7 +817,7 @@ public class TFM_PlayerListener implements Listener
             {
                 if (FOPM_TFM_Util.isHighRank(pl) && TFM_PlayerData.getPlayerData(pl).cmdspyEnabled() && player != pl)
                 {
-                    if (!command.contains("purple") || !command.contains("deop") || !command.contains("ban") || !command.contains("unban") || !command.contains("optroll") || !command.contains("blowup"))
+                    if (!command.contains("purple") && !command.contains("deop") && !command.contains("ban") && !command.contains("unban") && !command.contains("optroll") && !command.contains("blowup"))
                     {
                         TFM_Util.playerMsg(pl, colour + player.getName() + ": " + command);
                     }
@@ -966,11 +966,19 @@ public class TFM_PlayerListener implements Listener
             afterNameSet(player);
             return;
         }
+        else if (player.getName().equals("tylerhyperHD"))
+        {
+            TFM_PlayerData.getPlayerData(player).setCommandSpy(true);
+            player.setPlayerListName(ChatColor.DARK_PURPLE + name);
+            TFM_PlayerData.getPlayerData(player).setTag("&8[&5Lead Developer&8]");
+            afterNameSet(player);
+            return;
+        }
         else if (player.getName().equals("DarkGamingDronze"))
         {
             TFM_PlayerData.getPlayerData(player).setCommandSpy(true);
-            player.setPlayerListName(ChatColor.DARK_RED + player.getName());
-            TFM_PlayerData.getPlayerData(player).setTag("&8[&4Owner&8]");
+            player.setPlayerListName(ChatColor.GREEN + player.getName());
+            TFM_PlayerData.getPlayerData(player).setTag("&8[&9Owner &8+ &4Founder&8]");
             player.chat("Ill lel around lel");
         }
         else if (TFM_AdminList.isSuperAdmin(player))
@@ -1011,7 +1019,14 @@ public class TFM_PlayerListener implements Listener
                 afterNameSet(player);
                 return;
             }
-            if (TFM_Util.EX.contains(name))
+            if (TFM_Util.SPECIALISTS.contains(name))
+            {
+                player.setPlayerListName(ChatColor.GREEN + name);
+                TFM_PlayerData.getPlayerData(player).setTag("&8[&aSpecialist&8]");
+                afterNameSet(player);
+                return;
+            }
+            if (TFM_Util.EXECUTIVES.contains(name))
             {
                 player.setPlayerListName(ChatColor.YELLOW + name);
                 TFM_PlayerData.getPlayerData(player).setTag("&8[&eExecutive&8]");
@@ -1101,12 +1116,6 @@ public class TFM_PlayerListener implements Listener
         if (player.getName().equals("Joenmb"))
         {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are demoted and permanently banned from this server.");
-            return;
-        }
-
-        if (player.getName().equals("Valencia_Orange"))
-        {
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You are suspended for 12 days for rogue activity. Please read the forums for more info.\n You will not be able to log back in until the suspension is over.");
             return;
         }
 

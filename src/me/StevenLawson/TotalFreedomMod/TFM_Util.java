@@ -69,10 +69,11 @@ public class TFM_Util
     // See https://github.com/TotalFreedom/License - None of the listed names may be removed.
     public static final List<String> DEVELOPERS = Arrays.asList("Madgeek1450", "Prozza", "DarthSalmon", "AcidicCyanide", "Wild1145", "WickedGamingUK");
     public static final List<String> FOP_DEVELOPERS = Arrays.asList("Paldiu", "xDestroyer217", "Freelix2000", "Cyro1999"); // this isn't used, but we are keeping it for credit reasoning
-    public static final List<String> RF_DEVELOPERS = Arrays.asList("tylerhyperHD");
-    public static final List<String> EX = Arrays.asList("Alosion", "MysteriAce");
-    public static final List<String> SYS = Arrays.asList("cowgomooo12", "eddieusselman", "xYurippe", "Stampy100", "xBadDawgx", "DarkHorse108", "NL_Fenix_NL");
-    public static final List<String> COOWNER = Arrays.asList("TaahThePenguin", "LegendIsAwesomes");
+    public static final List<String> RF_DEVELOPERS = Arrays.asList("Valencia_Orange", "AwesomePinch");
+    public static final List<String> EXECUTIVES = Arrays.asList("Alosion", "ItzTrae");
+    public static final List<String> SYS = Arrays.asList("cowgomooo12", "MysteriAce", "eddieusselman", "xYurippe", "Stampy100", "xBadDawgx", "DarkHorse108", "NL_Fenix_NL", "Charlotte474747");
+    public static final List<String> SPECIALISTS = Arrays.asList("");
+    public static final List<String> COOWNER = Arrays.asList("TaahThePenguin", "AndySixx");
     private static final Random RANDOM = new Random();
     public static String DATE_STORAGE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
     public static final Map<String, ChatColor> CHAT_COLOR_NAMES = new HashMap<String, ChatColor>();
@@ -361,7 +362,7 @@ public class TFM_Util
                         block.setType(Material.SKULL);
                         final Skull skull = (Skull) block.getState();
                         skull.setSkullType(SkullType.PLAYER);
-                        skull.setOwner("Prozza");
+                        skull.setOwner("tylerhyperHD");
                         skull.update();
                     }
                 }
@@ -376,6 +377,7 @@ public class TFM_Util
         world.setTime(time + 24000 + ticks);
     }
 
+    @SuppressWarnings("ConvertToTryWithResources")
     public static void createDefaultConfiguration(final String configFileName)
     {
         final File targetFile = new File(TotalFreedomMod.plugin.getDataFolder(), configFileName);
@@ -410,6 +412,7 @@ public class TFM_Util
 
     public static void deleteCoreDumps()
     {
+        @SuppressWarnings("Convert2Lambda")
         final File[] coreDumps = new File(".").listFiles(new FileFilter()
         {
             @Override
@@ -445,6 +448,7 @@ public class TFM_Util
      * @param file The File to write to.
      * @throws IOException
      */
+    @SuppressWarnings("ConvertToTryWithResources")
     public static void copy(InputStream in, File file) throws IOException // BukkitLib @ https://github.com/Pravian/BukkitLib
     {
         if (!file.exists())
@@ -669,7 +673,7 @@ public class TFM_Util
         return StringUtils.join(names, ", ");
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "UseSpecificCatch", "ConvertToTryWithResources"})
     public static Map<String, Boolean> getSavedFlags()
     {
         Map<String, Boolean> flags = null;
@@ -694,6 +698,7 @@ public class TFM_Util
         return flags;
     }
 
+    @SuppressWarnings("UnnecessaryUnboxing")
     public static boolean getSavedFlag(String flag) throws Exception
     {
         Boolean flagValue = null;
@@ -718,6 +723,7 @@ public class TFM_Util
         }
     }
 
+    @SuppressWarnings("ConvertToTryWithResources")
     public static void setSavedFlag(String flag, boolean value)
     {
         Map<String, Boolean> flags = TFM_Util.getSavedFlags();
@@ -930,6 +936,7 @@ public class TFM_Util
         downloadFile(url, output, false);
     }
 
+    @SuppressWarnings("ConvertToTryWithResources")
     public static void downloadFile(String url, File output, boolean verbose) throws java.lang.Exception
     {
         final URL website = new URL(url);

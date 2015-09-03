@@ -6,6 +6,7 @@ import java.util.Random;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.COOWNER;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.RF_DEVELOPERS;
+import static me.StevenLawson.TotalFreedomMod.TFM_Util.SPECIALISTS;
 import static me.StevenLawson.TotalFreedomMod.TotalFreedomMod.server;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -50,7 +51,7 @@ public class FOPM_TFM_Util
     public static boolean isHighRank(Player player)
     {
         String name = player.getName();
-        if (COOWNER.contains(name) || RF_DEVELOPERS.contains(name) || TFM_ConfigEntry.SERVER_OWNERS.getList().contains(name))
+        if (SPECIALISTS.contains(name) || COOWNER.contains(name) || RF_DEVELOPERS.contains(name) || TFM_ConfigEntry.SERVER_OWNERS.getList().contains(name))
         {
             return true;
         }

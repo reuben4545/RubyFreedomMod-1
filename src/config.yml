@@ -19,7 +19,6 @@ server:
 
   # All players who show up as owner
   owners:
-    - reuben4545
     - falceso
     - DarkGamingDronze
 
@@ -213,7 +212,7 @@ announcer:
   enabled: true
 
   # Interval between announcements, in seconds.
-  interval: 600
+  interval: 100
 
   # Prefix for all announcements
   prefix: '&5[&eRubyFreedom&5] &b'
@@ -232,7 +231,6 @@ announcer:
     - 'falceso is the new official RubyFreedom owner.'
     - 'Server lagging?  Check the lag via "/tps"'
     - 'You are allowed to record and stream videos on RubyFreedom :D'
-    - 'An admin abusing?  Report it! pravi.us/vfa'
     - 'Player vs Player while in creative/god mode it forbidden!'
     - 'Spawn killing is forbidden!'
     - 'Invisible potions are allowed!'

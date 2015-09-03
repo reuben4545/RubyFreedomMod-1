@@ -1,6 +1,6 @@
 package me.StevenLawson.TotalFreedomMod.Commands;
 
-// tylerhyperHD's personal cmd
+// DarkGamingDronze's personal cmd
 import java.util.Arrays;
 import java.util.List;
 import me.StevenLawson.TotalFreedomMod.TFM_Util;
@@ -18,18 +18,20 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 @CommandPermissions(level = AdminLevel.OP, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Graces the world with purple. Command that is pretty pointless unless you are tyler.", usage = "/<command>")
-public class Command_purple extends TFM_Command
+@CommandParameters(description = "Graces the world with blackness. Command that is pretty pointless unless you are tyler.", usage = "/<command>")
+public class Command_black extends TFM_Command
 {
     @Override
     @SuppressWarnings("unchecked")
     public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-        if (!sender.getName().equals("tylerhyperHD"))
+        if (!sender.getName().equals("DarkGamingDronze"))
         {
-            sender_p.sendMessage(ChatColor.RED + "Only Tyler may use this command.\nNo permissions for the people who aren't purple.");
+            sender_p.sendMessage(ChatColor.RED + "Only DarkGamingDronze may use this command.\nNo permissions for the people who aren't black.");
             sender_p.setHealth(0.0);
             return true;
         }
@@ -41,11 +43,13 @@ public class Command_purple extends TFM_Command
                 Location loc = player.getLocation();
                 for (int i = 0; i <= 100; i++)
                 {
-                    TFM_Util.adminAction(sender_p.getName(), "Gracing the world with purple!", false);
+                    TFM_Util.adminAction(sender_p.getName(), "Gracing the world with darkness!", false);
                     world.strikeLightningEffect(loc);
                 }
                 PlayerInventory inv = player.getInventory();
-                ItemStack CamWool = new ItemStack(Material.WOOL, 1, (short) 10);
+                
+                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3, 255));
+                ItemStack CamWool = new ItemStack(Material.WOOL, 1, (short) 15);
                 ItemStack CamBow = new ItemStack(Material.BOW, 1);
                 ItemStack CamSword = new ItemStack(Material.GOLD_SWORD, 1);
                 ItemStack CamArrow = new ItemStack(Material.ARROW, 1);
@@ -74,32 +78,32 @@ public class Command_purple extends TFM_Command
                 LeatherArmorMeta chest = (LeatherArmorMeta) CamChest.getItemMeta();
                 LeatherArmorMeta legs = (LeatherArmorMeta) CamLegs.getItemMeta();
                 LeatherArmorMeta boots = (LeatherArmorMeta) CamBoots.getItemMeta();
-                wool.setDisplayName(ChatColor.YELLOW + "Purple Aura");
-                bow.setDisplayName(ChatColor.DARK_AQUA + "The Purple Shot");
-                sword.setDisplayName(ChatColor.DARK_GREEN + "The Purple Blade");
-                arrow.setDisplayName(ChatColor.DARK_PURPLE + "Purple Arrow");
-                chest.setDisplayName(ChatColor.YELLOW + "Purple Chestplate");
-                legs.setDisplayName(ChatColor.YELLOW + "Purple Leggings");
-                boots.setDisplayName(ChatColor.YELLOW + "Purple Boots");
+                wool.setDisplayName(ChatColor.RED + "Black Aura");
+                bow.setDisplayName(ChatColor.RED + "The Black Shot");
+                sword.setDisplayName(ChatColor.RED + "The Black Blade");
+                arrow.setDisplayName(ChatColor.RED + "Black Arrow");
+                chest.setDisplayName(ChatColor.RED + "Black Chestplate");
+                legs.setDisplayName(ChatColor.RED + "Black Leggings");
+                boots.setDisplayName(ChatColor.RED + "Black Boots");
                 Object lorewool = Arrays.asList(new String[]
                 {
                     ChatColor.BLUE + "This aura should protect", ChatColor.BLUE + "you from all possible harm."
                 });
                 Object lorebow = Arrays.asList(new String[]
                 {
-                    ChatColor.BLUE + "Legend has it, this bow", ChatColor.BLUE + "can only shoot purple arrows!"
+                    ChatColor.BLUE + "Legend has it, this bow", ChatColor.BLUE + "can only shoot black arrows!"
                 });
                 Object loresword = Arrays.asList(new String[]
                 {
-                    ChatColor.BLUE + "The purple has the power", ChatColor.BLUE + "to wield this legendary blade!"
+                    ChatColor.BLUE + "This black aura has the power", ChatColor.BLUE + "to wield this legendary blade!"
                 });
                 Object lorearrow = Arrays.asList(new String[]
                 {
-                    ChatColor.BLUE + "This arrow has a mysterious", ChatColor.BLUE + "purple aura around it..."
+                    ChatColor.BLUE + "This arrow has a mysterious", ChatColor.BLUE + "black aura around it..."
                 });
                 Object lorechestplate = Arrays.asList(new String[]
                 {
-                    ChatColor.BLUE + "This chestplate should protect", ChatColor.BLUE + "you from all possible harm."
+                    ChatColor.BLUE + "This chestplate should protect ", ChatColor.BLUE + "you from all possible harm."
                 });
                 Object loreleggings = Arrays.asList(new String[]
                 {
@@ -116,9 +120,9 @@ public class Command_purple extends TFM_Command
                 chest.setLore((List) lorechestplate);
                 legs.setLore((List) loreleggings);
                 boots.setLore((List) loreboots);
-                chest.setColor(Color.fromRGB(125, 20, 240));
-                legs.setColor(Color.fromRGB(125, 20, 240));
-                boots.setColor(Color.fromRGB(125, 20, 240));
+                chest.setColor(Color.fromRGB(0, 0, 0));
+                legs.setColor(Color.fromRGB(0, 0, 0));
+                boots.setColor(Color.fromRGB(0, 0, 0));
                 CamWool.setItemMeta(wool);
                 CamBow.setItemMeta(bow);
                 CamSword.setItemMeta(sword);

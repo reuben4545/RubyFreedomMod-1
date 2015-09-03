@@ -89,7 +89,7 @@ public class Command_gtfo extends TFM_Command
 
         if (reason != null)
         {
-            bcast.append(" - Reason: ").append(ChatColor.YELLOW).append(reason);
+            bcast.append("\nReason: ").append(ChatColor.YELLOW).append(reason).append(" (").append(sender.getName()).append(")");
         }
 
         TFM_Util.bcastMsg(bcast.toString());

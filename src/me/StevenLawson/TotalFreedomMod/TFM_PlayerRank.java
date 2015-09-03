@@ -3,7 +3,7 @@ package me.StevenLawson.TotalFreedomMod;
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.COOWNER;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.DEVELOPERS;
-import static me.StevenLawson.TotalFreedomMod.TFM_Util.EX;
+import static me.StevenLawson.TotalFreedomMod.TFM_Util.EXECUTIVES;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.FOP_DEVELOPERS;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.RF_DEVELOPERS;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.SYS;
@@ -120,7 +120,7 @@ public enum TFM_PlayerRank
             return MYSTERI;
         }
 
-        else if (EX.contains(sender.getName()))
+        else if (EXECUTIVES.contains(sender.getName()))
         {
             return EXEC;
         }
