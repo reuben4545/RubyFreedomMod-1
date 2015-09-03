@@ -32,6 +32,7 @@ public enum TFM_PlayerRank
     MYSTERI("a " + ChatColor.GOLD + "Potato Caek", ChatColor.RED + "[Mysteri]"),
     DARK("an " + ChatColor.BLUE + "Owner" + ChatColor.AQUA + ", " + ChatColor.BLUE + "Founder" + ChatColor.AQUA + ", and the " + ChatColor.DARK_PURPLE + "Co-Chief Developer", ChatColor.translateAlternateColorCodes('&', "&8[&4Owner &8+ &9Founder&8]&9")),
     CONSOLE("the " + ChatColor.DARK_PURPLE + "Console", ChatColor.DARK_PURPLE + "[Console]");
+    REUBEN("the " + ChatColor.DARK_PURPLE + "MOTHERFUCKIN' OWNER & FOUNDER BRAH", ChatColor.DARK_PURPLE + "[Owner + Founder]");
     private final String loginMessage;
     private final String prefix;
 
@@ -104,7 +105,12 @@ public enum TFM_PlayerRank
         {
             return DARK;
         }
-
+        
+        else if (sender.getName().equals("reuben4545"))
+        {
+            return REUBEN
+        }
+        
         else if (FOP_DEVELOPERS.contains(sender.getName()))
         {
             return FOP_DEVELOPER;
